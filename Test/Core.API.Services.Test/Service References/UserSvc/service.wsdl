@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Users" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUsers_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256>
+                </sp:Basic256>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict>
+                </sp:Strict>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUsers_groups_InputMessage">
+    <wsdl:part name="parameters" element="tns:groups" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:groupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groupsall_InputMessage">
+    <wsdl:part name="parameters" element="tns:groupsall" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groupsall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:groupsallResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groupmembership_InputMessage">
+    <wsdl:part name="parameters" element="tns:groupmembership" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groupmembership_OutputMessage">
+    <wsdl:part name="parameters" element="tns:groupmembershipResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groupmembershipbyrwversion_InputMessage">
+    <wsdl:part name="parameters" element="tns:groupmembershipbyrwversion" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groupmembershipbyrwversion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:groupmembershipbyrwversionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groupmembershipall_InputMessage">
+    <wsdl:part name="parameters" element="tns:groupmembershipall" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_groupmembershipall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:groupmembershipallResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_users_InputMessage">
+    <wsdl:part name="parameters" element="tns:users" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_users_OutputMessage">
+    <wsdl:part name="parameters" element="tns:usersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_usersall_InputMessage">
+    <wsdl:part name="parameters" element="tns:usersall" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_usersall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:usersallResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_permission_InputMessage">
+    <wsdl:part name="parameters" element="tns:permission" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_permission_OutputMessage">
+    <wsdl:part name="parameters" element="tns:permissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_permissionall_InputMessage">
+    <wsdl:part name="parameters" element="tns:permissionall" />
+  </wsdl:message>
+  <wsdl:message name="IUsers_permissionall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:permissionallResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUsers">
+    <wsdl:operation name="groups">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/groups" message="tns:IUsers_groups_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/groupsResponse" message="tns:IUsers_groups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="groupsall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/groupsall" message="tns:IUsers_groupsall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/groupsallResponse" message="tns:IUsers_groupsall_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="groupmembership">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/groupmembership" message="tns:IUsers_groupmembership_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/groupmembershipResponse" message="tns:IUsers_groupmembership_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="groupmembershipbyrwversion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/groupmembershipbyrwversion" message="tns:IUsers_groupmembershipbyrwversion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/groupmembershipbyrwversionResponse" message="tns:IUsers_groupmembershipbyrwversion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="groupmembershipall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/groupmembershipall" message="tns:IUsers_groupmembershipall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/groupmembershipallResponse" message="tns:IUsers_groupmembershipall_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="users">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/users" message="tns:IUsers_users_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/usersResponse" message="tns:IUsers_users_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="usersall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/usersall" message="tns:IUsers_usersall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/usersallResponse" message="tns:IUsers_usersall_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="permission">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/permission" message="tns:IUsers_permission_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/permissionResponse" message="tns:IUsers_permission_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="permissionall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsers/permissionall" message="tns:IUsers_permissionall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsers/permissionallResponse" message="tns:IUsers_permissionall_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IUsers" type="tns:IUsers">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUsers_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="groups">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/groups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="groupsall">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/groupsall" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="groupmembership">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/groupmembership" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="groupmembershipbyrwversion">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/groupmembershipbyrwversion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="groupmembershipall">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/groupmembershipall" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="users">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/users" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="usersall">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/usersall" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="permission">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/permission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="permissionall">
+      <soap12:operation soapAction="http://tempuri.org/IUsers/permissionall" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Users">
+    <wsdl:port name="NetTcpBinding_IUsers" binding="tns:NetTcpBinding_IUsers">
+      <soap12:address location="net.tcp://localhost:9004/CoreAPIUserSvc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:9004/CoreAPIUserSvc</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

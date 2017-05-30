@@ -1,0 +1,2350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Core.API.Entities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CoreAPIEntitiesStoreContainer">
+          <EntitySet Name="APIMessageLog" EntityType="Core.API.Entities.Store.APIMessageLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="APM_MASTER__DISTRIBUTION" EntityType="Core.API.Entities.Store.APM_MASTER__DISTRIBUTION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="APM_MASTER__INVOICE" EntityType="Core.API.Entities.Store.APM_MASTER__INVOICE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="APM_MASTER__TAX_DISTRIBUTION" EntityType="Core.API.Entities.Store.APM_MASTER__TAX_DISTRIBUTION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAccruals" EntityType="Core.API.Entities.Store.tblAccruals" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAccrualSettings" EntityType="Core.API.Entities.Store.tblAccrualSettings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblActions" EntityType="Core.API.Entities.Store.tblActions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblApprovalGroupItems" EntityType="Core.API.Entities.Store.tblApprovalGroupItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblApprovalGroupMembers" EntityType="Core.API.Entities.Store.tblApprovalGroupMembers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblApprovalGroups" EntityType="Core.API.Entities.Store.tblApprovalGroups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAutoApproveAccounts" EntityType="Core.API.Entities.Store.tblAutoApproveAccounts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAutoApproveVendors" EntityType="Core.API.Entities.Store.tblAutoApproveVendors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblConfiguration" EntityType="Core.API.Entities.Store.tblConfiguration" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblConnections" EntityType="Core.API.Entities.Store.tblConnections" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblExistingInvoices" EntityType="Core.API.Entities.Store.tblExistingInvoices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblGLAccounts" EntityType="Core.API.Entities.Store.tblGLAccounts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblInvoiceActions" EntityType="Core.API.Entities.Store.tblInvoiceActions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblInvoiceCodes" EntityType="Core.API.Entities.Store.tblInvoiceCodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblInvoiceNotes" EntityType="Core.API.Entities.Store.tblInvoiceNotes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblInvoices_Custom_Fields" EntityType="Core.API.Entities.Store.tblInvoices_Custom_Fields" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPrefixVendorJob" EntityType="Core.API.Entities.Store.tblPrefixVendorJob" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSystemSettings" EntityType="Core.API.Entities.Store.tblSystemSettings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUserGroupMembers" EntityType="Core.API.Entities.Store.tblUserGroupMembers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUserGroups" EntityType="Core.API.Entities.Store.tblUserGroups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUserPermissions" EntityType="Core.API.Entities.Store.tblUserPermissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUsersConfiguration" EntityType="Core.API.Entities.Store.tblUsersConfiguration" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblVersion" EntityType="Core.API.Entities.Store.tblVersion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TSErrorLog" EntityType="Core.API.Entities.Store.TSErrorLog" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="ConfigurationID" Association="Core.API.Entities.Store.ConfigurationID">
+            <End Role="tblConfiguration" EntitySet="tblConfiguration" />
+            <End Role="tblUsersConfiguration" EntitySet="tblUsersConfiguration" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="APIMessageLog">
+          <Key>
+            <PropertyRef Name="MessageLodID" />
+          </Key>
+          <Property Name="MessageLodID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentID" Type="int" />
+          <Property Name="MessageType" Type="varchar" MaxLength="100" />
+          <Property Name="Application" Type="varchar" MaxLength="100" />
+          <Property Name="ScreenName" Type="varchar" MaxLength="100" />
+          <Property Name="Function" Type="varchar" MaxLength="200" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="APM_MASTER__DISTRIBUTION">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="DistSeq" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="DistSeq" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="int" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="30" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Tax_Group" Type="nvarchar" MaxLength="6" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="Tax_Liability" Type="float" />
+          <Property Name="Discount_Offered" Type="float" />
+          <Property Name="Retainage" Type="float" />
+          <Property Name="Misc_Deduction" Type="float" />
+          <Property Name="Misc_Deduction2_Percent" Type="float" />
+          <Property Name="Exempt_1099" Type="bit" />
+          <Property Name="Authorization" Type="nvarchar" MaxLength="10" />
+          <Property Name="Joint_Payee" Type="nvarchar" MaxLength="30" />
+          <Property Name="Dist_Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Expense_Account" Type="nvarchar" MaxLength="30" />
+          <Property Name="Accounts_Payable_Account" Type="nvarchar" MaxLength="30" />
+          <Property Name="Job" Type="nvarchar" MaxLength="13" />
+          <Property Name="Extra" Type="nvarchar" MaxLength="10" />
+          <Property Name="Cost_Code" Type="nvarchar" MaxLength="15" />
+          <Property Name="Category" Type="nvarchar" MaxLength="3" />
+          <Property Name="Commitment" Type="nvarchar" MaxLength="12" />
+          <Property Name="Commitment_Line_Item" Type="int" />
+          <Property Name="Units" Type="float" />
+          <Property Name="Unit_Cost" Type="float" />
+          <Property Name="Draw" Type="nvarchar" MaxLength="15" />
+          <Property Name="Standard_Item" Type="nvarchar" MaxLength="10" />
+          <Property Name="Equipment" Type="nvarchar" MaxLength="15" />
+          <Property Name="Cost_Code_295" Type="nvarchar" MaxLength="15" />
+          <Property Name="Misc_Entry_1" Type="nvarchar" MaxLength="10" />
+          <Property Name="Misc_Entry_Units_1" Type="float" />
+          <Property Name="Misc_Entry_2" Type="nvarchar" MaxLength="10" />
+          <Property Name="Misc_Entry_Units_2" Type="float" />
+          <Property Name="MeterOdometer" Type="float" />
+          <Property Name="PM_Tenant" Type="nvarchar" MaxLength="10" />
+          <Property Name="PM_Lease" Type="nvarchar" MaxLength="15" />
+          <Property Name="PM_Lease_Revision_Num" Type="smallint" />
+          <Property Name="PM_Property" Type="nvarchar" MaxLength="10" />
+          <Property Name="PM_Unit" Type="nvarchar" MaxLength="10" />
+          <Property Name="PM_Charge_Type" Type="nvarchar" MaxLength="10" />
+          <Property Name="PM_Charge_Date" Type="datetime" />
+          <Property Name="PM_Item_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="PM_Chargeback_Description" Type="nvarchar" MaxLength="30" />
+          <Property Name="PM_Markup_Percent" Type="float" />
+          <Property Name="PM_Markup_Amount" Type="float" />
+          <Property Name="PM_Markup_Charge_Type" Type="nvarchar" MaxLength="10" />
+          <Property Name="Operator_Stamp" Type="nvarchar" MaxLength="20" />
+          <Property Name="Date_Stamp" Type="datetime" />
+          <Property Name="RwVersion" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="APM_MASTER__INVOICE">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="ConnectionID" Type="int" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="Vendor" Type="nvarchar" MaxLength="10" />
+          <Property Name="Invoice" Type="nvarchar" MaxLength="15" />
+          <Property Name="Description" Type="nvarchar" MaxLength="30" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="Discount_Offered" Type="float" />
+          <Property Name="Misc_Deduction" Type="float" />
+          <Property Name="Invoice_Date" Type="datetime" />
+          <Property Name="Date_Received" Type="datetime" />
+          <Property Name="Discount_Date" Type="datetime" />
+          <Property Name="Payment_Date" Type="datetime" />
+          <Property Name="Accounting_Date" Type="datetime" />
+          <Property Name="Invoice_Code_1" Type="nvarchar" MaxLength="10" />
+          <Property Name="Invoice_Code_2" Type="nvarchar" MaxLength="10" />
+          <Property Name="Smry_Payee_Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Smry_Payee_Address_1" Type="nvarchar" MaxLength="33" />
+          <Property Name="Smry_Payee_Address_2" Type="nvarchar" MaxLength="33" />
+          <Property Name="Smry_Payee_City" Type="nvarchar" MaxLength="30" />
+          <Property Name="Smry_Payee_State" Type="nvarchar" MaxLength="4" />
+          <Property Name="Smry_Payee_ZIP" Type="nvarchar" MaxLength="10" />
+          <Property Name="Operator_Stamp" Type="nvarchar" MaxLength="20" />
+          <Property Name="Date_Stamp" Type="datetime" />
+          <Property Name="POHeaderID" Type="int" />
+          <Property Name="RwVersion" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="APM_MASTER__TAX_DISTRIBUTION">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="DistSeq" />
+            <PropertyRef Name="TaxSeq" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="DistSeq" Type="int" Nullable="false" />
+          <Property Name="TaxSeq" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImportTaxSeq" Type="int" Nullable="false" />
+          <Property Name="ConnectionID" Type="int" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="Tax_Item" Type="nvarchar" MaxLength="6" />
+          <Property Name="Tax_Amount" Type="float" />
+          <Property Name="Tax_Liability" Type="float" />
+          <Property Name="Operator_Stamp" Type="nvarchar" MaxLength="20" />
+          <Property Name="Date_Stamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblAccruals">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="int" />
+          <Property Name="AccrualBatchID" Type="int" />
+          <Property Name="AccrualPeriod" Type="datetime" />
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="Selected" Type="bit" />
+          <Property Name="Vendor" Type="nvarchar" MaxLength="10" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Invoice" Type="nvarchar" MaxLength="15" />
+          <Property Name="Description" Type="nvarchar" MaxLength="30" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Invoice_Date" Type="datetime" />
+          <Property Name="Accounting_Date" Type="datetime" />
+          <Property Name="Expense_Account" Type="nvarchar" MaxLength="25" />
+          <Property Name="Accounts_Payable_Account" Type="nvarchar" MaxLength="25" />
+          <Property Name="APGLPrefix" Type="nvarchar" MaxLength="25" />
+          <Property Name="Commitment" Type="nvarchar" MaxLength="12" />
+          <Property Name="Commitment_Line_Item" Type="int" />
+          <Property Name="Job" Type="nvarchar" MaxLength="13" />
+          <Property Name="Extra" Type="nvarchar" MaxLength="10" />
+          <Property Name="Cost_Code" Type="nvarchar" MaxLength="15" />
+          <Property Name="Category" Type="nvarchar" MaxLength="3" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblAccrualSettings">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="AccrueJobCost" Type="bit" />
+          <Property Name="JCCompleteInvoices" Type="nchar" MaxLength="50" />
+          <Property Name="JCIncompleteInvoices" Type="nchar" MaxLength="50" />
+          <Property Name="JCDefJob" Type="nchar" MaxLength="12" />
+          <Property Name="JCDefCostCode" Type="nchar" MaxLength="12" />
+          <Property Name="JCDefCategory" Type="nchar" MaxLength="3" />
+          <Property Name="JCDebitAccount" Type="nchar" MaxLength="25" />
+          <Property Name="JCCreditAccount" Type="nchar" MaxLength="25" />
+          <Property Name="AccrueOverhead" Type="bit" />
+          <Property Name="OHCompleteInvoices" Type="nchar" MaxLength="50" />
+          <Property Name="OHIncompleteInvoices" Type="nchar" MaxLength="50" />
+          <Property Name="OHDebitPrefix" Type="nchar" MaxLength="25" />
+          <Property Name="OHDebitAccount" Type="nchar" MaxLength="25" />
+          <Property Name="OHCreditPrefix" Type="nchar" MaxLength="25" />
+          <Property Name="OHCreditAccount" Type="nchar" MaxLength="25" />
+          <Property Name="OHAccrualJournal" Type="int" />
+          <Property Name="OHReversalJournal" Type="int" />
+          <Property Name="LastAccrualDate" Type="datetime" />
+          <Property Name="CloseAccoutingDate" Type="bit" />
+          <Property Name="Reference1Type" Type="nchar" MaxLength="10" />
+          <Property Name="Reference1" Type="nchar" MaxLength="10" />
+          <Property Name="Reference2Type" Type="nchar" MaxLength="10" />
+          <Property Name="Reference2" Type="nchar" MaxLength="10" />
+          <Property Name="AccrualPeriod" Type="datetime" />
+          <Property Name="CurrentAction" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblActions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Action1" Type="nchar" MaxLength="15" />
+          <Property Name="Action2" Type="nchar" MaxLength="15" />
+          <Property Name="Action3" Type="nchar" MaxLength="15" />
+          <Property Name="Action4" Type="nchar" MaxLength="15" />
+          <Property Name="Action5" Type="nchar" MaxLength="15" />
+          <Property Name="Action6" Type="nchar" MaxLength="15" />
+          <Property Name="Action7" Type="nchar" MaxLength="15" />
+          <Property Name="Action8" Type="nchar" MaxLength="15" />
+          <Property Name="Action9" Type="nchar" MaxLength="15" />
+          <Property Name="Action10" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tblApprovalGroupItems">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="MemberType" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="MemberValue" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="Selected" Type="bit" Nullable="false" />
+          <Property Name="Key1" Type="nvarchar" MaxLength="25" />
+          <Property Name="Key2" Type="nvarchar" MaxLength="25" />
+          <Property Name="Key3" Type="nvarchar" MaxLength="25" />
+          <Property Name="Key4" Type="nvarchar" MaxLength="25" />
+          <Property Name="Description" Type="nvarchar" MaxLength="40" />
+          <Property Name="ProjectManager" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblApprovalGroupMembers">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="MemberType" />
+            <PropertyRef Name="MemberValue" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="MemberType" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="MemberValue" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="ProcessingGroupID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblApprovalGroups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessingGroupID" Type="nvarchar" MaxLength="10" />
+          <Property Name="RejectProcessingGroupID" Type="int" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="APVendUserID" Type="nvarchar" MaxLength="10" />
+          <Property Name="Action01" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID01" Type="int" />
+          <Property Name="UserID01" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold01" Type="float" />
+          <Property Name="Action02" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID02" Type="int" />
+          <Property Name="UserID02" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold02" Type="float" />
+          <Property Name="Action03" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID03" Type="int" />
+          <Property Name="UserID03" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold03" Type="float" />
+          <Property Name="Action04" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID04" Type="int" />
+          <Property Name="UserID04" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold04" Type="float" />
+          <Property Name="Action05" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID05" Type="int" />
+          <Property Name="UserID05" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold05" Type="float" />
+          <Property Name="Action06" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID06" Type="int" />
+          <Property Name="UserID06" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold06" Type="float" />
+          <Property Name="Action07" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID07" Type="int" />
+          <Property Name="UserID07" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold07" Type="float" />
+          <Property Name="Action08" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID08" Type="int" />
+          <Property Name="UserID08" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold08" Type="float" />
+          <Property Name="Action09" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID09" Type="int" />
+          <Property Name="UserID09" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold09" Type="float" />
+          <Property Name="Action10" Type="nvarchar" MaxLength="15" />
+          <Property Name="GroupID10" Type="int" />
+          <Property Name="UserID10" Type="nvarchar" MaxLength="8" />
+          <Property Name="Threshold10" Type="float" />
+          <Property Name="InvoiceCompleteLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAutoApproveAccounts">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Base_Account" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="Base_Account" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="AutoApproveRecur" Type="bit" />
+          <Property Name="AutoApproveRegular" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblAutoApproveVendors">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Vendor" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="Vendor" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="AutoApproveRecur" Type="bit" />
+          <Property Name="AutoApproveRegular" Type="bit" />
+          <Property Name="ApprovalThresholdRecur" Type="float" />
+          <Property Name="ApprovalThresholdRegular" Type="float" />
+        </EntityType>
+        <EntityType Name="tblConfiguration">
+          <Key>
+            <PropertyRef Name="ConfigurationID" />
+          </Key>
+          <Property Name="ConfigurationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigurationName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ConfigurationDescription" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblConnections">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Path" Type="nvarchar" MaxLength="255" />
+          <Property Name="SystemType" Type="nvarchar" MaxLength="10" />
+          <Property Name="DefaultConnection" Type="bit" />
+          <Property Name="PrefixADesc" Type="varchar" MaxLength="25" />
+          <Property Name="PrefixABDesc" Type="varchar" MaxLength="25" />
+          <Property Name="PrefixABCDesc" Type="varchar" MaxLength="25" />
+          <Property Name="JobSec1Size" Type="int" />
+          <Property Name="JobPunct1" Type="varchar" MaxLength="1" />
+          <Property Name="JobSec2Size" Type="int" />
+          <Property Name="JobPunct2" Type="varchar" MaxLength="1" />
+          <Property Name="JobSec3Size" Type="int" />
+          <Property Name="CostCodeSec1Size" Type="int" />
+          <Property Name="CostCodePunct1" Type="varchar" MaxLength="1" />
+          <Property Name="CostCodeSec2Size" Type="int" />
+          <Property Name="CostCodePunct2" Type="varchar" MaxLength="1" />
+          <Property Name="CostCodeSec3Size" Type="int" />
+          <Property Name="CostCodePunct3" Type="varchar" MaxLength="1" />
+          <Property Name="CostCodeSec4Size" Type="int" />
+          <Property Name="LastApproveImportedDate" Type="datetime" />
+          <Property Name="LastApproveRMDate" Type="datetime" />
+          <Property Name="LastApproveRecurringDate" Type="datetime" />
+          <Property Name="LastApproveRegularDate" Type="datetime" />
+          <Property Name="Alias" Type="varchar" MaxLength="100" />
+          <Property Name="DisplayOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblExistingInvoices">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Vendor" />
+            <PropertyRef Name="Invoice" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="Vendor" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Invoice" Type="nvarchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tblGLAccounts">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Account_Title" Type="nvarchar" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="tblInvoiceActions">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="int" />
+          <Property Name="InvoiceID" Type="int" />
+          <Property Name="ProcessGroupID" Type="int" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="10" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="ActionType" Type="nvarchar" MaxLength="25" />
+          <Property Name="ActionLevel" Type="smallint" />
+          <Property Name="Hold" Type="bit" />
+          <Property Name="Rejected" Type="bit" />
+          <Property Name="Complete" Type="bit" />
+          <Property Name="CompletedBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="DateAssigned" Type="datetime" />
+          <Property Name="AssignedBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="DateComplete" Type="datetime" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="255" />
+          <Property Name="ActionSource" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblInvoiceCodes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="Description" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblInvoiceNotes">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="Sequence" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NoteType" Type="nvarchar" MaxLength="5" />
+          <Property Name="ActionType" Type="nvarchar" MaxLength="15" />
+          <Property Name="ActionLevel" Type="smallint" />
+          <Property Name="Priority" Type="nvarchar" MaxLength="10" />
+          <Property Name="NoteDate" Type="datetime" />
+          <Property Name="Operator" Type="nvarchar" MaxLength="10" />
+          <Property Name="NoteText" Type="nvarchar" MaxLength="255" />
+          <Property Name="RwVersion" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblInvoices_Custom_Fields">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPrefixVendorJob">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="RecordType" />
+            <PropertyRef Name="RecordKey" />
+            <PropertyRef Name="AssociateWith" />
+          </Key>
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="RecordType" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="RecordKey" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="AssociateWith" Type="nchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblSystemSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReqRouteCommentDataEntry" Type="bit" Nullable="false" />
+          <Property Name="ReqRouteCommentApprove" Type="bit" Nullable="false" />
+          <Property Name="ReqRouteCommentReview" Type="bit" Nullable="false" />
+          <Property Name="OperatorClearMinutes" Type="int" />
+          <Property Name="BlankPageTolerance" Type="int" />
+          <Property Name="AllocateTaxes" Type="bit" />
+          <Property Name="BudgetVarianceCheck" Type="bit" />
+          <Property Name="VendorJobLimit" Type="int" Nullable="false" />
+          <Property Name="AlwaysExport" Type="bit" Nullable="false" />
+          <Property Name="ExportFormat" Type="nchar" MaxLength="30" />
+          <Property Name="DateFormat" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="DateEntryFormatMDY" Type="nchar" Nullable="false" MaxLength="6" />
+          <Property Name="DateEntryFormatMD" Type="nchar" Nullable="false" MaxLength="4" />
+          <Property Name="RegionalDateFormat" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="AllowPOAsAppGrpMember" Type="bit" Nullable="false" />
+          <Property Name="RestrictGLJobAccess" Type="bit" Nullable="false" />
+          <Property Name="ApproveImportedInvoices" Type="bit" Nullable="false" />
+          <Property Name="ApproveRMInvoices" Type="bit" Nullable="false" />
+          <Property Name="ApproveRecurringInvoices" Type="bit" Nullable="false" />
+          <Property Name="TimberSyncUpdate" Type="bit" Nullable="false" />
+          <Property Name="ApproveRegularInvoices" Type="bit" Nullable="false" />
+          <Property Name="UseTimberSync" Type="bit" Nullable="false" />
+          <Property Name="AllowNoJobOrGLEntry" Type="bit" Nullable="false" />
+          <Property Name="IgnoreThresholdOnReRoute" Type="bit" Nullable="false" />
+          <Property Name="AutoDisplayApprovals" Type="bit" Nullable="false" />
+          <Property Name="OmitTaxFromCommit" Type="bit" Nullable="false" />
+          <Property Name="DocAssemblyOrder" Type="varchar" MaxLength="40" />
+          <Property Name="UseCommitItemDescr" Type="bit" Nullable="false" />
+          <Property Name="InvoiceExceedsCommitment" Type="varchar" MaxLength="20" />
+          <Property Name="AimInvoiceDocTypeId" Type="int" />
+          <Property Name="AimCheckDocTypeId" Type="int" />
+          <Property Name="AIMUsers" Type="varchar(max)" />
+          <Property Name="AllowExportBatchNaming" Type="bit" Nullable="false" />
+          <Property Name="QPDFConvRes" Type="int" />
+          <Property Name="OCRAccountingDate" Type="int" />
+          <Property Name="OCRRecognitionPercent" Type="int" />
+          <Property Name="OCRDeskewOnLoad" Type="bit" />
+          <Property Name="CaptureResolution" Type="int" />
+          <Property Name="FinalResolution" Type="int" />
+          <Property Name="UsePOInterface" Type="bit" Nullable="false" />
+          <Property Name="POInvoiceTolerance" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="POInvoiceTypeOverTolerance" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="POWarnOverTolerance" Type="bit" Nullable="false" />
+          <Property Name="POMessageOverTolerance" Type="varchar" Nullable="false" />
+          <Property Name="TSLitePath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OCRRemoveLeadingZerosInvoiceNumber" Type="bit" />
+          <Property Name="OCRDefaultInvoiceDateFormat" Type="int" />
+          <Property Name="MSMQServerName" Type="varchar" MaxLength="500" />
+          <Property Name="MSMQServerPort" Type="varchar" MaxLength="100" />
+          <Property Name="AllowMultiLineCommitment" Type="bit" />
+          <Property Name="AllowOverrideUnitCost" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUserGroupMembers">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserGroupID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="10" />
+          <Property Name="RwVersion" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblUserGroups">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+          </Key>
+          <Property Name="UserGroupID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GroupDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActionType" Type="nvarchar" MaxLength="15" />
+          <Property Name="RwVersion" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblUserPermissions">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="PrefixOrJob" />
+            <PropertyRef Name="PrefixOrJobNo" />
+          </Key>
+          <Property Name="UserID" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="ConnectionID" Type="int" Nullable="false" />
+          <Property Name="PrefixOrJob" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="PrefixOrJobNo" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="Type" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="RwVersion" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblUsersConfiguration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="nvarchar" Nullable="false" MaxLength="8" />
+          <Property Name="ConfigurationID" Type="int" />
+          <Property Name="ConfigurationValue" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblVersion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Version" Type="nchar" MaxLength="20" />
+          <Property Name="DOTNETVersion" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TSErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ScreenName" Type="varchar" MaxLength="100" />
+          <Property Name="FunctionName" Type="varchar" MaxLength="100" />
+          <Property Name="Exception" Type="varchar(max)" />
+          <Property Name="InnerException" Type="varchar(max)" />
+          <Property Name="ErrMessage" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserID" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <Association Name="ConfigurationID">
+          <End Role="tblConfiguration" Type="Core.API.Entities.Store.tblConfiguration" Multiplicity="0..1" />
+          <End Role="tblUsersConfiguration" Type="Core.API.Entities.Store.tblUsersConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblConfiguration">
+              <PropertyRef Name="ConfigurationID" />
+            </Principal>
+            <Dependent Role="tblUsersConfiguration">
+              <PropertyRef Name="ConfigurationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="API_DeleteDistribution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="DistSeq" Type="int" Mode="In" />
+          <Parameter Name="UserIDNo" Type="varchar" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="API_DeleteDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActionLevel" Type="int" Mode="In" />
+          <Parameter Name="DeleteReason" Type="varchar" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="API_DeleteTaxAllocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="DistSeq" Type="int" Mode="In" />
+          <Parameter Name="UserId" Type="varchar" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="API_DocumentExists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="API_GetCommitmentItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConnectionID" Type="int" Mode="In" />
+          <Parameter Name="Commitment" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="API_GetDefaultConnection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="API_GetDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetDocumentImagePath" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetDocumentListInApproval" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConnectionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetDocumentNotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetEquipmentMemoCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConnectionID" Type="int" Mode="In" />
+          <Parameter Name="EqCostCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="API_GetInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetInvoiceDistributions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetNumericRwVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetNumericRwVersionUserByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetNumericRwVersionUserGroupByUserGroupID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserGroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetNumericRwVersionUserGroupPermissionByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConnectionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetUserGroupMembers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="API_GetUserGroupMembersByGroupId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetUserGroupMembersByRwVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RwVersion" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="API_GetUserGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="API_GetUserGroupsByRowVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RwVersion" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="API_GetUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="API_GetUsersByRowVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RwVersion" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="API_GetUsersPermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConnectionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetUsersPermissionsByRowVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RwVersion" Type="bigint" Mode="In" />
+          <Parameter Name="ConnectionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="API_GetVendorInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="varchar" Mode="In" />
+          <Parameter Name="retVal" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="API_GetVendorInfoDT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="API_HoldDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActionLevel" Type="int" Mode="In" />
+          <Parameter Name="HoldReason" Type="varchar" Mode="In" />
+          <Parameter Name="HoldDate" Type="datetime" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="API_HoldDocumentInAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActionLevel" Type="int" Mode="In" />
+          <Parameter Name="HoldReason" Type="varchar" Mode="In" />
+          <Parameter Name="HoldDate" Type="datetime" Mode="In" />
+          <Parameter Name="OnAPHold" Type="bit" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="API_InsertShadowDistRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="DistSeq" Type="int" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="API_RouteDocumentManual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="ActionLevel" Type="int" Mode="In" />
+          <Parameter Name="RoutingUserID" Type="int" Mode="In" />
+          <Parameter Name="RouteToID" Type="int" Mode="In" />
+          <Parameter Name="RouteToComment" Type="varchar(max)" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="API_RouteInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConnectionId" Type="int" Mode="In" />
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+          <Parameter Name="UserId" Type="varchar" Mode="In" />
+          <Parameter Name="GroupId" Type="int" Mode="In" />
+          <Parameter Name="ProcessGroupId" Type="int" Mode="In" />
+          <Parameter Name="ActionType" Type="varchar" Mode="In" />
+          <Parameter Name="ActionLevel" Type="int" Mode="In" />
+          <Parameter Name="Hold" Type="bit" Mode="In" />
+          <Parameter Name="Rejected" Type="bit" Mode="In" />
+          <Parameter Name="DateAssigned" Type="datetime" Mode="In" />
+          <Parameter Name="AssignedBy" Type="varchar" Mode="In" />
+          <Parameter Name="Operator" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="API_SaveDocumentNotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="NoteText" Type="nvarchar" Mode="In" />
+          <Parameter Name="NoteDate" Type="datetime" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+          <Parameter Name="RetSequence" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="API_TestForExistingInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ConnectionID" Type="int" Mode="In" />
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+          <Parameter Name="Invoice" Type="varchar" Mode="In" />
+          <Parameter Name="Vendor" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="API_ValidateDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ActionLevel" Type="int" Mode="In" />
+          <Parameter Name="RetMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="TS_ApproveInvoiceAction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+          <Parameter Name="UserIdApprovalIsFor" Type="varchar" Mode="In" />
+          <Parameter Name="AppType" Type="varchar" Mode="In" />
+          <Parameter Name="Approver" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="TS_GetRoutingInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TS_UpdateInvoiceWithActionInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+          <Parameter Name="Level" Type="int" Mode="In" />
+          <Parameter Name="ActionType" Type="varchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Core.API.Entities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CoreAPIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="APM_MASTER__DISTRIBUTION" EntityType="Core.API.Entities.APM_MASTER__DISTRIBUTION" />
+          <EntitySet Name="APM_MASTER__INVOICE" EntityType="Core.API.Entities.APM_MASTER__INVOICE" />
+          <EntitySet Name="APM_MASTER__TAX_DISTRIBUTION" EntityType="Core.API.Entities.APM_MASTER__TAX_DISTRIBUTION" />
+          <EntitySet Name="tblAccruals" EntityType="Core.API.Entities.tblAccrual" />
+          <EntitySet Name="tblAccrualSettings" EntityType="Core.API.Entities.tblAccrualSetting" />
+          <EntitySet Name="tblActions" EntityType="Core.API.Entities.tblAction" />
+          <EntitySet Name="tblApprovalGroupItems" EntityType="Core.API.Entities.tblApprovalGroupItem" />
+          <EntitySet Name="tblApprovalGroupMembers" EntityType="Core.API.Entities.tblApprovalGroupMember" />
+          <EntitySet Name="tblApprovalGroups" EntityType="Core.API.Entities.tblApprovalGroup" />
+          <EntitySet Name="tblAutoApproveAccounts" EntityType="Core.API.Entities.tblAutoApproveAccount" />
+          <EntitySet Name="tblAutoApproveVendors" EntityType="Core.API.Entities.tblAutoApproveVendor" />
+          <EntitySet Name="tblConfigurations" EntityType="Core.API.Entities.tblConfiguration" />
+          <EntitySet Name="tblConnections" EntityType="Core.API.Entities.tblConnection" />
+          <EntitySet Name="tblExistingInvoices" EntityType="Core.API.Entities.tblExistingInvoice" />
+          <EntitySet Name="tblGLAccounts" EntityType="Core.API.Entities.tblGLAccount" />
+          <EntitySet Name="tblInvoiceActions" EntityType="Core.API.Entities.tblInvoiceAction" />
+          <EntitySet Name="tblInvoiceCodes" EntityType="Core.API.Entities.tblInvoiceCode" />
+          <EntitySet Name="tblInvoiceNotes" EntityType="Core.API.Entities.tblInvoiceNote" />
+          <EntitySet Name="tblInvoices_Custom_Fields" EntityType="Core.API.Entities.tblInvoices_Custom_Fields" />
+          <EntitySet Name="tblPrefixVendorJobs" EntityType="Core.API.Entities.tblPrefixVendorJob" />
+          <EntitySet Name="tblUserPermissions" EntityType="Core.API.Entities.tblUserPermission" />
+          <EntitySet Name="tblUsersConfigurations" EntityType="Core.API.Entities.tblUsersConfiguration" />
+          <EntitySet Name="tblVersions" EntityType="Core.API.Entities.tblVersion" />
+          <AssociationSet Name="ConfigurationID" Association="Core.API.Entities.ConfigurationID">
+            <End Role="tblConfiguration" EntitySet="tblConfigurations" />
+            <End Role="tblUsersConfiguration" EntitySet="tblUsersConfigurations" />
+          </AssociationSet>
+          <EntitySet Name="TSErrorLogs" EntityType="Core.API.Entities.TSErrorLog" />
+          <EntitySet Name="tblUserGroups" EntityType="Core.API.Entities.tblUserGroup" />
+          <EntitySet Name="tblUserGroupMembers" EntityType="Core.API.Entities.tblUserGroupMember" />
+          <FunctionImport Name="GetUserGroupsAll" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetUserGroupsByRowVersion" ReturnType="Collection(String)">
+          <Parameter Name="RwVersion" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserGroupMembers" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetUserGroupMembersByGroupId" ReturnType="Collection(String)">
+          <Parameter Name="GroupId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUsers" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetUsesrByRowVersion" ReturnType="Collection(String)">
+          <Parameter Name="RwVersion" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetUsersPermissions" ReturnType="Collection(String)" >
+          <Parameter Name="ConnectionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUsersPermissionsByRowVersion" ReturnType="Collection(String)">
+            <Parameter Name="RwVersion" Mode="In" Type="Int64" />
+            <Parameter Name="ConnectionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserGroupMembersByRwVersion" ReturnType="Collection(String)">
+          <Parameter Name="RwVersion" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetDocumentNotes" ReturnType="Collection(String)">
+          <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK_tblUserGroupMembers_tblUserGroups" Association="Core.API.Entities.FK_tblUserGroupMembers_tblUserGroups">
+            <End Role="tblUserGroup" EntitySet="tblUserGroups" />
+            <End Role="tblUserGroupMember" EntitySet="tblUserGroupMembers" />
+          </AssociationSet>
+          <FunctionImport Name="SaveDocumentNote" ReturnType="Collection(Core.API.Entities.SaveDocumentNote_Result)">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="NoteText" Mode="In" Type="String" />
+            <Parameter Name="NoteDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+            <Parameter Name="RetSequence" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDocumentImagePath" ReturnType="Collection(String)">
+          <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDefaultConnection" ReturnType="Collection(Int32)" />
+          <EntitySet Name="APIMessageLogs" EntityType="Core.API.Entities.APIMessageLog" />
+          <FunctionImport Name="DocumentExists" ReturnType="Collection(String)">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteDocument" ReturnType="Collection(String)">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="ActionLevel" Mode="In" Type="Int32" />
+            <Parameter Name="DeleteReason" Mode="In" Type="String" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tblSystemSettings" EntityType="Core.API.Entities.tblSystemSetting" />
+          <FunctionImport Name="API_DeleteTaxAllocation" ReturnType="Collection(String)">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="DistSeq" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="String" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertShadowDistRecord" ReturnType="Collection(String)">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="DistSeq" Mode="In" Type="Int32" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteDistribution" ReturnType="Collection(String)">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="DistSeq" Mode="In" Type="Int32" />
+            <Parameter Name="UserIDNo" Mode="In" Type="String" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoldDocument" ReturnType="Collection(String)">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="ActionLevel" Mode="In" Type="Int32" />
+            <Parameter Name="HoldReason" Mode="In" Type="String" />
+            <Parameter Name="HoldDate" Mode="In" Type="DateTime" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoldDocumentInAP" ReturnType="Collection(String)">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="ActionLevel" Mode="In" Type="Int32" />
+            <Parameter Name="HoldReason" Mode="In" Type="String" />
+            <Parameter Name="HoldDate" Mode="In" Type="DateTime" />
+            <Parameter Name="OnAPHold" Mode="In" Type="Boolean" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ApproveInvoiceAction">
+            <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+            <Parameter Name="UserIdApprovalIsFor" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+            <Parameter Name="Approver" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetInvoice" ReturnType="Collection(Core.API.Entities.GetInvoice_Result)">
+          <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetInvoiceDistributions" ReturnType="Collection(Core.API.Entities.GetInvoiceDistributions_Result)">
+          <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRoutingInfo" ReturnType="Collection(Core.API.Entities.GetRoutingInfo_Result)" />
+          <FunctionImport Name="RouteInvoice" ReturnType="Collection(Int32)">
+            <Parameter Name="ConnectionId" Mode="In" Type="Int32" />
+            <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="String" />
+            <Parameter Name="GroupId" Mode="In" Type="Int32" />
+            <Parameter Name="ProcessGroupId" Mode="In" Type="Int32" />
+            <Parameter Name="ActionType" Mode="In" Type="String" />
+            <Parameter Name="ActionLevel" Mode="In" Type="Int32" />
+            <Parameter Name="Hold" Mode="In" Type="Boolean" />
+            <Parameter Name="Rejected" Mode="In" Type="Boolean" />
+            <Parameter Name="DateAssigned" Mode="In" Type="DateTime" />
+            <Parameter Name="AssignedBy" Mode="In" Type="String" />
+            <Parameter Name="Operator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateInvoiceWithActionInfo">
+            <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+            <Parameter Name="Level" Mode="In" Type="Int32" />
+            <Parameter Name="ActionType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetDocument" ReturnType="Collection(String)">
+          <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDocumentListInApproval" ReturnType="Collection(String)">
+          <Parameter Name="ConnectionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetEquipmentMemoCost" ReturnType="Collection(Boolean)">
+            <Parameter Name="ConnectionID" Mode="In" Type="Int32" />
+            <Parameter Name="EqCostCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TestForExistingInvoice" ReturnType="Collection(Boolean)">
+            <Parameter Name="ConnectionID" Mode="In" Type="Int32" />
+            <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+            <Parameter Name="Invoice" Mode="In" Type="String" />
+            <Parameter Name="Vendor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCommitmentItems" ReturnType="Collection(Core.API.Entities.API_GetCommitmentItems_Result)">
+            <Parameter Name="ConnectionID" Mode="In" Type="Int32" />
+            <Parameter Name="Commitment" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RouteDocumentManual">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="ActionLevel" Mode="In" Type="Int32" />
+            <Parameter Name="RoutingUserID" Mode="In" Type="Int32" />
+            <Parameter Name="RouteToID" Mode="In" Type="Int32" />
+            <Parameter Name="RouteToComment" Mode="In" Type="String" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ValidateDocument">
+            <Parameter Name="DocumentID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ActionLevel" Mode="In" Type="Int32" />
+            <Parameter Name="RetMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="APM_MASTER__DISTRIBUTION">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="DistSeq" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="DistSeq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Tax_Group" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="Tax_Liability" Type="Double" />
+          <Property Name="Discount_Offered" Type="Double" />
+          <Property Name="Retainage" Type="Double" />
+          <Property Name="Misc_Deduction" Type="Double" />
+          <Property Name="Misc_Deduction2_Percent" Type="Double" />
+          <Property Name="Exempt_1099" Type="Boolean" />
+          <Property Name="Authorization" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Joint_Payee" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Dist_Code" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Expense_Account" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Accounts_Payable_Account" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Job" Type="String" MaxLength="13" Unicode="true" FixedLength="false" />
+          <Property Name="Extra" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Cost_Code" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Category" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Commitment" Type="String" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="Commitment_Line_Item" Type="Int32" />
+          <Property Name="Units" Type="Double" />
+          <Property Name="Unit_Cost" Type="Double" />
+          <Property Name="Draw" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Standard_Item" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Equipment" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Cost_Code_295" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Misc_Entry_1" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Misc_Entry_Units_1" Type="Double" />
+          <Property Name="Misc_Entry_2" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Misc_Entry_Units_2" Type="Double" />
+          <Property Name="MeterOdometer" Type="Double" />
+          <Property Name="PM_Tenant" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PM_Lease" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="PM_Lease_Revision_Num" Type="Int16" />
+          <Property Name="PM_Property" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PM_Unit" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PM_Charge_Type" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PM_Charge_Date" Type="DateTime" />
+          <Property Name="PM_Item_ID" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PM_Chargeback_Description" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="PM_Markup_Percent" Type="Double" />
+          <Property Name="PM_Markup_Amount" Type="Double" />
+          <Property Name="PM_Markup_Charge_Type" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Operator_Stamp" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Date_Stamp" Type="DateTime" />
+          <Property Type="Binary" Name="RwVersion" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="APM_MASTER__INVOICE">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="ConnectionID" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="Vendor" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Invoice" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="Discount_Offered" Type="Double" />
+          <Property Name="Misc_Deduction" Type="Double" />
+          <Property Name="Invoice_Date" Type="DateTime" Nullable="true" />
+          <Property Name="Date_Received" Type="DateTime" Nullable="true" />
+          <Property Name="Discount_Date" Type="DateTime" Nullable="true" />
+          <Property Name="Payment_Date" Type="DateTime" Nullable="true" />
+          <Property Name="Accounting_Date" Type="DateTime" Nullable="true" />
+          <Property Name="Invoice_Code_1" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Invoice_Code_2" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Smry_Payee_Name" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Smry_Payee_Address_1" Type="String" MaxLength="33" Unicode="true" FixedLength="false" />
+          <Property Name="Smry_Payee_Address_2" Type="String" MaxLength="33" Unicode="true" FixedLength="false" />
+          <Property Name="Smry_Payee_City" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Smry_Payee_State" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Smry_Payee_ZIP" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Operator_Stamp" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Date_Stamp" Type="DateTime" Nullable="true" />
+          <Property Name="POHeaderID" Type="Int32" />
+          <Property Type="Binary" Name="RwVersion" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="APM_MASTER__TAX_DISTRIBUTION">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="DistSeq" />
+            <PropertyRef Name="TaxSeq" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="DistSeq" Type="Int32" Nullable="false" />
+          <Property Name="TaxSeq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImportTaxSeq" Type="Int32" Nullable="false" />
+          <Property Name="ConnectionID" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="Tax_Item" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="Tax_Amount" Type="Double" />
+          <Property Name="Tax_Liability" Type="Double" />
+          <Property Name="Operator_Stamp" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Date_Stamp" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="tblAccrual">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="Int32" />
+          <Property Name="AccrualBatchID" Type="Int32" />
+          <Property Name="AccrualPeriod" Type="DateTime" />
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="Selected" Type="Boolean" />
+          <Property Name="Vendor" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="VendorName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Invoice" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Invoice_Date" Type="DateTime" />
+          <Property Name="Accounting_Date" Type="DateTime" />
+          <Property Name="Expense_Account" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Accounts_Payable_Account" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="APGLPrefix" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Commitment" Type="String" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="Commitment_Line_Item" Type="Int32" />
+          <Property Name="Job" Type="String" MaxLength="13" Unicode="true" FixedLength="false" />
+          <Property Name="Extra" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Cost_Code" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Category" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAccrualSetting">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="AccrueJobCost" Type="Boolean" />
+          <Property Name="JCCompleteInvoices" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="JCIncompleteInvoices" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="JCDefJob" Type="String" MaxLength="12" Unicode="true" FixedLength="true" />
+          <Property Name="JCDefCostCode" Type="String" MaxLength="12" Unicode="true" FixedLength="true" />
+          <Property Name="JCDefCategory" Type="String" MaxLength="3" Unicode="true" FixedLength="true" />
+          <Property Name="JCDebitAccount" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="JCCreditAccount" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="AccrueOverhead" Type="Boolean" />
+          <Property Name="OHCompleteInvoices" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="OHIncompleteInvoices" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="OHDebitPrefix" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="OHDebitAccount" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="OHCreditPrefix" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="OHCreditAccount" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="OHAccrualJournal" Type="Int32" />
+          <Property Name="OHReversalJournal" Type="Int32" />
+          <Property Name="LastAccrualDate" Type="DateTime" />
+          <Property Name="CloseAccoutingDate" Type="Boolean" />
+          <Property Name="Reference1Type" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Reference1" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Reference2Type" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Reference2" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="AccrualPeriod" Type="DateTime" />
+          <Property Name="CurrentAction" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="tblAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Action1" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action2" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action3" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action4" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action5" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action6" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action7" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action8" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action9" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+          <Property Name="Action10" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="tblApprovalGroupItem">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="MemberType" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="MemberValue" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="Selected" Type="Boolean" Nullable="false" />
+          <Property Name="Key1" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Key2" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Key3" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Key4" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="ProjectManager" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblApprovalGroupMember">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="MemberType" />
+            <PropertyRef Name="MemberValue" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="MemberType" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="MemberValue" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="ProcessingGroupID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblApprovalGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessingGroupID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="RejectProcessingGroupID" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="APVendUserID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Action01" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID01" Type="Int32" />
+          <Property Name="UserID01" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold01" Type="Double" />
+          <Property Name="Action02" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID02" Type="Int32" />
+          <Property Name="UserID02" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold02" Type="Double" />
+          <Property Name="Action03" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID03" Type="Int32" />
+          <Property Name="UserID03" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold03" Type="Double" />
+          <Property Name="Action04" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID04" Type="Int32" />
+          <Property Name="UserID04" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold04" Type="Double" />
+          <Property Name="Action05" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID05" Type="Int32" />
+          <Property Name="UserID05" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold05" Type="Double" />
+          <Property Name="Action06" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID06" Type="Int32" />
+          <Property Name="UserID06" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold06" Type="Double" />
+          <Property Name="Action07" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID07" Type="Int32" />
+          <Property Name="UserID07" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold07" Type="Double" />
+          <Property Name="Action08" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID08" Type="Int32" />
+          <Property Name="UserID08" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold08" Type="Double" />
+          <Property Name="Action09" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID09" Type="Int32" />
+          <Property Name="UserID09" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold09" Type="Double" />
+          <Property Name="Action10" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID10" Type="Int32" />
+          <Property Name="UserID10" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Threshold10" Type="Double" />
+          <Property Name="InvoiceCompleteLevel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAutoApproveAccount">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Base_Account" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="Base_Account" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="AutoApproveRecur" Type="Boolean" />
+          <Property Name="AutoApproveRegular" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblAutoApproveVendor">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Vendor" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="Vendor" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="AutoApproveRecur" Type="Boolean" />
+          <Property Name="AutoApproveRegular" Type="Boolean" />
+          <Property Name="ApprovalThresholdRecur" Type="Double" />
+          <Property Name="ApprovalThresholdRegular" Type="Double" />
+        </EntityType>
+        <EntityType Name="tblConfiguration">
+          <Key>
+            <PropertyRef Name="ConfigurationID" />
+          </Key>
+          <Property Name="ConfigurationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigurationName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ConfigurationDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblUsersConfigurations" Relationship="Core.API.Entities.ConfigurationID" FromRole="tblConfiguration" ToRole="tblUsersConfiguration" />
+        </EntityType>
+        <EntityType Name="tblConnection">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Path" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SystemType" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="DefaultConnection" Type="Boolean" />
+          <Property Name="PrefixADesc" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="PrefixABDesc" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="PrefixABCDesc" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="JobSec1Size" Type="Int32" />
+          <Property Name="JobPunct1" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="JobSec2Size" Type="Int32" />
+          <Property Name="JobPunct2" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="JobSec3Size" Type="Int32" />
+          <Property Name="CostCodeSec1Size" Type="Int32" />
+          <Property Name="CostCodePunct1" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="CostCodeSec2Size" Type="Int32" />
+          <Property Name="CostCodePunct2" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="CostCodeSec3Size" Type="Int32" />
+          <Property Name="CostCodePunct3" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="CostCodeSec4Size" Type="Int32" />
+          <Property Name="LastApproveImportedDate" Type="DateTime" />
+          <Property Name="LastApproveRMDate" Type="DateTime" />
+          <Property Name="LastApproveRecurringDate" Type="DateTime" />
+          <Property Name="LastApproveRegularDate" Type="DateTime" />
+          <Property Name="Alias" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblExistingInvoice">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Vendor" />
+            <PropertyRef Name="Invoice" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="Vendor" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Invoice" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblGLAccount">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Account_Title" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblInvoiceAction">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="Int32" />
+          <Property Name="InvoiceID" Type="Int32" />
+          <Property Name="ProcessGroupID" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="ActionType" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="ActionLevel" Type="Int16" />
+          <Property Name="Hold" Type="Boolean" />
+          <Property Name="Rejected" Type="Boolean" />
+          <Property Name="Complete" Type="Boolean" />
+          <Property Name="CompletedBy" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="DateAssigned" Type="DateTime" />
+          <Property Name="AssignedBy" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="DateComplete" Type="DateTime" />
+          <Property Name="Comment" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="ActionSource" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblInvoiceCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceCode" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblInvoiceNote">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="Sequence" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoteType" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="ActionType" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="ActionLevel" Type="Int16" />
+          <Property Name="Priority" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="NoteDate" Type="DateTime" />
+          <Property Name="Operator" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="NoteText" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Type="Binary" Name="RwVersion" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblInvoices_Custom_Fields">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPrefixVendorJob">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="RecordType" />
+            <PropertyRef Name="RecordKey" />
+            <PropertyRef Name="AssociateWith" />
+          </Key>
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="RecordType" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="RecordKey" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="AssociateWith" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="tblUserPermission">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="PrefixOrJob" />
+            <PropertyRef Name="PrefixOrJobNo" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" />
+          <Property Name="PrefixOrJob" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="PrefixOrJobNo" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Type="Binary" Name="RwVersion" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblUsersConfiguration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="ConfigurationID" Type="Int32" />
+          <Property Name="ConfigurationValue" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblConfiguration" Relationship="Core.API.Entities.ConfigurationID" FromRole="tblUsersConfiguration" ToRole="tblConfiguration" />
+        </EntityType>
+        <EntityType Name="tblVersion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Version" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+          <Property Name="DOTNETVersion" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="ConfigurationID">
+          <End Role="tblConfiguration" Type="Core.API.Entities.tblConfiguration" Multiplicity="0..1" />
+          <End Role="tblUsersConfiguration" Type="Core.API.Entities.tblUsersConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblConfiguration">
+              <PropertyRef Name="ConfigurationID" />
+            </Principal>
+            <Dependent Role="tblUsersConfiguration">
+              <PropertyRef Name="ConfigurationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TSErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Type="Int32" Name="ErrorLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ScreenName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunctionName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Exception" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InnerException" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ErrMessage" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="String" Name="CreatedUserID" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserGroup">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+          </Key>
+          <Property Type="Int32" Name="UserGroupID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="GroupDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ActionType" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="RwVersion" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblUserGroupMembers" Relationship="Core.API.Entities.FK_tblUserGroupMembers_tblUserGroups" FromRole="tblUserGroup" ToRole="tblUserGroupMember" />
+        </EntityType>
+        <EntityType Name="tblUserGroupMember">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="UserGroupID" Nullable="false" />
+          <Property Type="String" Name="UserID" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserType" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="RwVersion" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblUserGroup" Relationship="Core.API.Entities.FK_tblUserGroupMembers_tblUserGroups" FromRole="tblUserGroupMember" ToRole="tblUserGroup" />
+        </EntityType>
+        <Association Name="FK_tblUserGroupMembers_tblUserGroups">
+          <End Type="Core.API.Entities.tblUserGroup" Role="tblUserGroup" Multiplicity="1" />
+          <End Type="Core.API.Entities.tblUserGroupMember" Role="tblUserGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserGroup">
+              <PropertyRef Name="UserGroupID" />
+            </Principal>
+            <Dependent Role="tblUserGroupMember">
+              <PropertyRef Name="UserGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="APIMessageLog">
+          <Key>
+            <PropertyRef Name="MessageLodID" />
+          </Key>
+          <Property Type="Int32" Name="MessageLodID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DocumentID" />
+          <Property Type="String" Name="MessageType" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Application" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ScreenName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Function" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UserID" />
+          <Property Type="DateTime" Name="CreatedDate" />
+        </EntityType>
+        <EntityType Name="tblSystemSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="ReqRouteCommentDataEntry" Nullable="false" />
+          <Property Type="Boolean" Name="ReqRouteCommentApprove" Nullable="false" />
+          <Property Type="Boolean" Name="ReqRouteCommentReview" Nullable="false" />
+          <Property Type="Int32" Name="OperatorClearMinutes" />
+          <Property Type="Int32" Name="BlankPageTolerance" />
+          <Property Type="Boolean" Name="AllocateTaxes" />
+          <Property Type="Boolean" Name="BudgetVarianceCheck" />
+          <Property Type="Int32" Name="VendorJobLimit" Nullable="false" />
+          <Property Type="Boolean" Name="AlwaysExport" Nullable="false" />
+          <Property Type="String" Name="ExportFormat" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="DateFormat" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="DateEntryFormatMDY" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="DateEntryFormatMD" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="RegionalDateFormat" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Boolean" Name="AllowPOAsAppGrpMember" Nullable="false" />
+          <Property Type="Boolean" Name="RestrictGLJobAccess" Nullable="false" />
+          <Property Type="Boolean" Name="ApproveImportedInvoices" Nullable="false" />
+          <Property Type="Boolean" Name="ApproveRMInvoices" Nullable="false" />
+          <Property Type="Boolean" Name="ApproveRecurringInvoices" Nullable="false" />
+          <Property Type="Boolean" Name="TimberSyncUpdate" Nullable="false" />
+          <Property Type="Boolean" Name="ApproveRegularInvoices" Nullable="false" />
+          <Property Type="Boolean" Name="UseTimberSync" Nullable="false" />
+          <Property Type="Boolean" Name="AllowNoJobOrGLEntry" Nullable="false" />
+          <Property Type="Boolean" Name="IgnoreThresholdOnReRoute" Nullable="false" />
+          <Property Type="Boolean" Name="AutoDisplayApprovals" Nullable="false" />
+          <Property Type="Boolean" Name="OmitTaxFromCommit" Nullable="false" />
+          <Property Type="String" Name="DocAssemblyOrder" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="UseCommitItemDescr" Nullable="false" />
+          <Property Type="String" Name="InvoiceExceedsCommitment" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="AimInvoiceDocTypeId" />
+          <Property Type="Int32" Name="AimCheckDocTypeId" />
+          <Property Type="String" Name="AIMUsers" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="AllowExportBatchNaming" Nullable="false" />
+          <Property Type="Int32" Name="QPDFConvRes" />
+          <Property Type="Int32" Name="OCRAccountingDate" />
+          <Property Type="Int32" Name="OCRRecognitionPercent" />
+          <Property Type="Boolean" Name="OCRDeskewOnLoad" />
+          <Property Type="Int32" Name="CaptureResolution" />
+          <Property Type="Int32" Name="FinalResolution" />
+          <Property Type="Boolean" Name="UsePOInterface" Nullable="false" />
+          <Property Type="Decimal" Name="POInvoiceTolerance" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="String" Name="POInvoiceTypeOverTolerance" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="POWarnOverTolerance" Nullable="false" />
+          <Property Type="String" Name="POMessageOverTolerance" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TSLitePath" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="OCRRemoveLeadingZerosInvoiceNumber" />
+          <Property Type="Int32" Name="OCRDefaultInvoiceDateFormat" />
+          <Property Type="String" Name="MSMQServerName" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MSMQServerPort" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="AllowMultiLineCommitment" />
+          <Property Type="Boolean" Name="AllowOverrideUnitCost" />
+        </EntityType>
+        <ComplexType Name="SaveDocumentNote_Result">
+          <Property Type="String" Name="Message" Nullable="true" MaxLength="8000" />
+          <Property Type="Int32" Name="Sequence" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetInvoice_Result">
+          <Property Type="String" Name="InvoiceType" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="MatchType" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="InvoiceId" Nullable="false" />
+          <Property Type="Boolean" Name="OnHold" Nullable="true" />
+          <Property Type="String" Name="CurrentActionType" Nullable="true" MaxLength="25" />
+          <Property Type="Int32" Name="ConnectionId" Nullable="true" />
+          <Property Type="Int16" Name="CurrentActionLevel" Nullable="true" />
+          <Property Type="String" Name="ConnectionDescription" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="InvoiceID1" Nullable="true" />
+          <Property Type="Int32" Name="ConnectionID1" Nullable="true" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+          <Property Type="String" Name="Vendor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Invoice" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Amount" Nullable="true" />
+          <Property Type="Double" Name="Tax" Nullable="true" />
+          <Property Type="Double" Name="Discount_Offered" Nullable="true" />
+          <Property Type="Double" Name="Misc_Deduction" Nullable="true" />
+          <Property Type="DateTime" Name="Invoice_Date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Date_Received" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Discount_Date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Payment_Date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Accounting_Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Invoice_Code_1" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Invoice_Code_2" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Smry_Payee_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Smry_Payee_Address_1" Nullable="true" MaxLength="33" />
+          <Property Type="String" Name="Smry_Payee_Address_2" Nullable="true" MaxLength="33" />
+          <Property Type="String" Name="Smry_Payee_City" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Smry_Payee_State" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Smry_Payee_ZIP" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Operator_Stamp" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="Date_Stamp" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="POHeaderID" Nullable="true" />
+          <Property Type="Binary" Name="RwVersion" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="imagePath" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="InvoiceCode" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="ScanDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetInvoiceDistributions_Result">
+          <Property Type="Int32" Name="InvoiceId" Nullable="false" />
+          <Property Type="Int32" Name="DistSeq" Nullable="false" />
+          <Property Type="Int32" Name="ConnectionId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Amount" Nullable="true" />
+          <Property Type="String" Name="Tax_Group" Nullable="true" MaxLength="6" />
+          <Property Type="Double" Name="Tax" Nullable="true" />
+          <Property Type="Double" Name="Tax_Liability" Nullable="true" />
+          <Property Type="Double" Name="Discount_Offered" Nullable="true" />
+          <Property Type="Double" Name="Retainage" Nullable="true" />
+          <Property Type="Double" Name="Misc_Deduction" Nullable="true" />
+          <Property Type="Double" Name="Misc_Deduction2_Percent" Nullable="true" />
+          <Property Type="Boolean" Name="Exempt_1099" Nullable="true" />
+          <Property Type="String" Name="Authorization" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Joint_Payee" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="dist_code" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Expense_Account" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Accounts_Payable_Account" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Job" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="Extra" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Cost_Code" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Commitment" Nullable="true" MaxLength="12" />
+          <Property Type="Int32" Name="Commitment_Line_Item" Nullable="true" />
+          <Property Type="Double" Name="Units" Nullable="true" />
+          <Property Type="Double" Name="Unit_Cost" Nullable="true" />
+          <Property Type="String" Name="draw" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Standard_Item" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Equipment" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Cost_Code_295" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Misc_Entry_1" Nullable="true" MaxLength="10" />
+          <Property Type="Double" Name="Misc_Entry_Units_1" Nullable="true" />
+          <Property Type="String" Name="Misc_Entry_2" Nullable="true" MaxLength="10" />
+          <Property Type="Double" Name="Misc_Entry_Units_2" Nullable="true" />
+          <Property Type="Double" Name="MeterOdometer" Nullable="true" />
+          <Property Type="String" Name="PM_Tenant" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PM_Lease" Nullable="true" MaxLength="15" />
+          <Property Type="Int16" Name="PM_Lease_Revision_Num" Nullable="true" />
+          <Property Type="String" Name="PM_Property" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PM_Unit" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PM_Charge_Type" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="PM_Charge_Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PM_Item_ID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PM_Chargeback_Description" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="PM_Markup_Percent" Nullable="true" />
+          <Property Type="Double" Name="PM_Markup_Amount" Nullable="true" />
+          <Property Type="String" Name="PM_Markup_Charge_Type" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Operator_Stamp" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="Date_Stamp" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetRoutingInfo_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Boolean" Name="InvoiceType" Nullable="false" />
+          <Property Type="Boolean" Name="Commitment" Nullable="false" />
+          <Property Type="Boolean" Name="VendorJob" Nullable="false" />
+          <Property Type="Boolean" Name="VendorPrefix" Nullable="false" />
+          <Property Type="Boolean" Name="VendorID" Nullable="false" />
+          <Property Type="Boolean" Name="JobExtra" Nullable="false" />
+          <Property Type="Boolean" Name="JobCostCodeCategory" Nullable="false" />
+          <Property Type="Boolean" Name="JobCategory" Nullable="false" />
+          <Property Type="Boolean" Name="JobCostCode" Nullable="false" />
+          <Property Type="Boolean" Name="Category" Nullable="false" />
+          <Property Type="Boolean" Name="CostCode" Nullable="false" />
+          <Property Type="Boolean" Name="Equipment" Nullable="false" />
+          <Property Type="Boolean" Name="JobAuthorization" Nullable="false" />
+          <Property Type="Boolean" Name="Job" Nullable="false" />
+          <Property Type="Boolean" Name="FullGLAccount" Nullable="false" />
+          <Property Type="Boolean" Name="BaseGLAccount" Nullable="false" />
+          <Property Type="Boolean" Name="GLPrefix" Nullable="false" />
+          <Property Type="Boolean" Name="SetApprovalFlagOnExport" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="API_GetCommitmentItems_Result">
+          <Property Type="String" Name="Commitment" Nullable="true" MaxLength="12" />
+          <Property Type="Int32" Name="ItemNumber" Nullable="true" />
+          <Property Type="Decimal" Name="UnitCost" Nullable="true" Precision="12" Scale="4" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoreAPIEntitiesStoreContainer" CdmEntityContainer="CoreAPIEntities">
+          <EntitySetMapping Name="APM_MASTER__DISTRIBUTION"><EntityTypeMapping TypeName="Core.API.Entities.APM_MASTER__DISTRIBUTION"><MappingFragment StoreEntitySet="APM_MASTER__DISTRIBUTION">
+            <ScalarProperty Name="RwVersion" ColumnName="RwVersion" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+            <ScalarProperty Name="DistSeq" ColumnName="DistSeq" />
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Amount" ColumnName="Amount" />
+            <ScalarProperty Name="Tax_Group" ColumnName="Tax_Group" />
+            <ScalarProperty Name="Tax" ColumnName="Tax" />
+            <ScalarProperty Name="Tax_Liability" ColumnName="Tax_Liability" />
+            <ScalarProperty Name="Discount_Offered" ColumnName="Discount_Offered" />
+            <ScalarProperty Name="Retainage" ColumnName="Retainage" />
+            <ScalarProperty Name="Misc_Deduction" ColumnName="Misc_Deduction" />
+            <ScalarProperty Name="Misc_Deduction2_Percent" ColumnName="Misc_Deduction2_Percent" />
+            <ScalarProperty Name="Exempt_1099" ColumnName="Exempt_1099" />
+            <ScalarProperty Name="Authorization" ColumnName="Authorization" />
+            <ScalarProperty Name="Joint_Payee" ColumnName="Joint_Payee" />
+            <ScalarProperty Name="Dist_Code" ColumnName="Dist_Code" />
+            <ScalarProperty Name="Expense_Account" ColumnName="Expense_Account" />
+            <ScalarProperty Name="Accounts_Payable_Account" ColumnName="Accounts_Payable_Account" />
+            <ScalarProperty Name="Job" ColumnName="Job" />
+            <ScalarProperty Name="Extra" ColumnName="Extra" />
+            <ScalarProperty Name="Cost_Code" ColumnName="Cost_Code" />
+            <ScalarProperty Name="Category" ColumnName="Category" />
+            <ScalarProperty Name="Commitment" ColumnName="Commitment" />
+            <ScalarProperty Name="Commitment_Line_Item" ColumnName="Commitment_Line_Item" />
+            <ScalarProperty Name="Units" ColumnName="Units" />
+            <ScalarProperty Name="Unit_Cost" ColumnName="Unit_Cost" />
+            <ScalarProperty Name="Draw" ColumnName="Draw" />
+            <ScalarProperty Name="Standard_Item" ColumnName="Standard_Item" />
+            <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+            <ScalarProperty Name="Cost_Code_295" ColumnName="Cost_Code_295" />
+            <ScalarProperty Name="Misc_Entry_1" ColumnName="Misc_Entry_1" />
+            <ScalarProperty Name="Misc_Entry_Units_1" ColumnName="Misc_Entry_Units_1" />
+            <ScalarProperty Name="Misc_Entry_2" ColumnName="Misc_Entry_2" />
+            <ScalarProperty Name="Misc_Entry_Units_2" ColumnName="Misc_Entry_Units_2" />
+            <ScalarProperty Name="MeterOdometer" ColumnName="MeterOdometer" />
+            <ScalarProperty Name="PM_Tenant" ColumnName="PM_Tenant" />
+            <ScalarProperty Name="PM_Lease" ColumnName="PM_Lease" />
+            <ScalarProperty Name="PM_Lease_Revision_Num" ColumnName="PM_Lease_Revision_Num" />
+            <ScalarProperty Name="PM_Property" ColumnName="PM_Property" />
+            <ScalarProperty Name="PM_Unit" ColumnName="PM_Unit" />
+            <ScalarProperty Name="PM_Charge_Type" ColumnName="PM_Charge_Type" />
+            <ScalarProperty Name="PM_Charge_Date" ColumnName="PM_Charge_Date" />
+            <ScalarProperty Name="PM_Item_ID" ColumnName="PM_Item_ID" />
+            <ScalarProperty Name="PM_Chargeback_Description" ColumnName="PM_Chargeback_Description" />
+            <ScalarProperty Name="PM_Markup_Percent" ColumnName="PM_Markup_Percent" />
+            <ScalarProperty Name="PM_Markup_Amount" ColumnName="PM_Markup_Amount" />
+            <ScalarProperty Name="PM_Markup_Charge_Type" ColumnName="PM_Markup_Charge_Type" />
+            <ScalarProperty Name="Operator_Stamp" ColumnName="Operator_Stamp" />
+            <ScalarProperty Name="Date_Stamp" ColumnName="Date_Stamp" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="APM_MASTER__INVOICE"><EntityTypeMapping TypeName="Core.API.Entities.APM_MASTER__INVOICE"><MappingFragment StoreEntitySet="APM_MASTER__INVOICE">
+            <ScalarProperty Name="RwVersion" ColumnName="RwVersion" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+            <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+            <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Amount" ColumnName="Amount" />
+            <ScalarProperty Name="Tax" ColumnName="Tax" />
+            <ScalarProperty Name="Discount_Offered" ColumnName="Discount_Offered" />
+            <ScalarProperty Name="Misc_Deduction" ColumnName="Misc_Deduction" />
+            <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+            <ScalarProperty Name="Date_Received" ColumnName="Date_Received" />
+            <ScalarProperty Name="Discount_Date" ColumnName="Discount_Date" />
+            <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+            <ScalarProperty Name="Accounting_Date" ColumnName="Accounting_Date" />
+            <ScalarProperty Name="Invoice_Code_1" ColumnName="Invoice_Code_1" />
+            <ScalarProperty Name="Invoice_Code_2" ColumnName="Invoice_Code_2" />
+            <ScalarProperty Name="Smry_Payee_Name" ColumnName="Smry_Payee_Name" />
+            <ScalarProperty Name="Smry_Payee_Address_1" ColumnName="Smry_Payee_Address_1" />
+            <ScalarProperty Name="Smry_Payee_Address_2" ColumnName="Smry_Payee_Address_2" />
+            <ScalarProperty Name="Smry_Payee_City" ColumnName="Smry_Payee_City" />
+            <ScalarProperty Name="Smry_Payee_State" ColumnName="Smry_Payee_State" />
+            <ScalarProperty Name="Smry_Payee_ZIP" ColumnName="Smry_Payee_ZIP" />
+            <ScalarProperty Name="Operator_Stamp" ColumnName="Operator_Stamp" />
+            <ScalarProperty Name="Date_Stamp" ColumnName="Date_Stamp" />
+            <ScalarProperty Name="POHeaderID" ColumnName="POHeaderID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="APM_MASTER__TAX_DISTRIBUTION"><EntityTypeMapping TypeName="Core.API.Entities.APM_MASTER__TAX_DISTRIBUTION"><MappingFragment StoreEntitySet="APM_MASTER__TAX_DISTRIBUTION">
+            <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+            <ScalarProperty Name="DistSeq" ColumnName="DistSeq" />
+            <ScalarProperty Name="TaxSeq" ColumnName="TaxSeq" />
+            <ScalarProperty Name="ImportTaxSeq" ColumnName="ImportTaxSeq" />
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+            <ScalarProperty Name="Tax_Item" ColumnName="Tax_Item" />
+            <ScalarProperty Name="Tax_Amount" ColumnName="Tax_Amount" />
+            <ScalarProperty Name="Tax_Liability" ColumnName="Tax_Liability" />
+            <ScalarProperty Name="Operator_Stamp" ColumnName="Operator_Stamp" />
+            <ScalarProperty Name="Date_Stamp" ColumnName="Date_Stamp" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblAccruals"><EntityTypeMapping TypeName="Core.API.Entities.tblAccrual"><MappingFragment StoreEntitySet="tblAccruals">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="AccrualBatchID" ColumnName="AccrualBatchID" />
+            <ScalarProperty Name="AccrualPeriod" ColumnName="AccrualPeriod" />
+            <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+            <ScalarProperty Name="Selected" ColumnName="Selected" />
+            <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+            <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+            <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Amount" ColumnName="Amount" />
+            <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+            <ScalarProperty Name="Accounting_Date" ColumnName="Accounting_Date" />
+            <ScalarProperty Name="Expense_Account" ColumnName="Expense_Account" />
+            <ScalarProperty Name="Accounts_Payable_Account" ColumnName="Accounts_Payable_Account" />
+            <ScalarProperty Name="APGLPrefix" ColumnName="APGLPrefix" />
+            <ScalarProperty Name="Commitment" ColumnName="Commitment" />
+            <ScalarProperty Name="Commitment_Line_Item" ColumnName="Commitment_Line_Item" />
+            <ScalarProperty Name="Job" ColumnName="Job" />
+            <ScalarProperty Name="Extra" ColumnName="Extra" />
+            <ScalarProperty Name="Cost_Code" ColumnName="Cost_Code" />
+            <ScalarProperty Name="Category" ColumnName="Category" />
+            <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblAccrualSettings"><EntityTypeMapping TypeName="Core.API.Entities.tblAccrualSetting"><MappingFragment StoreEntitySet="tblAccrualSettings">
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="AccrueJobCost" ColumnName="AccrueJobCost" />
+            <ScalarProperty Name="JCCompleteInvoices" ColumnName="JCCompleteInvoices" />
+            <ScalarProperty Name="JCIncompleteInvoices" ColumnName="JCIncompleteInvoices" />
+            <ScalarProperty Name="JCDefJob" ColumnName="JCDefJob" />
+            <ScalarProperty Name="JCDefCostCode" ColumnName="JCDefCostCode" />
+            <ScalarProperty Name="JCDefCategory" ColumnName="JCDefCategory" />
+            <ScalarProperty Name="JCDebitAccount" ColumnName="JCDebitAccount" />
+            <ScalarProperty Name="JCCreditAccount" ColumnName="JCCreditAccount" />
+            <ScalarProperty Name="AccrueOverhead" ColumnName="AccrueOverhead" />
+            <ScalarProperty Name="OHCompleteInvoices" ColumnName="OHCompleteInvoices" />
+            <ScalarProperty Name="OHIncompleteInvoices" ColumnName="OHIncompleteInvoices" />
+            <ScalarProperty Name="OHDebitPrefix" ColumnName="OHDebitPrefix" />
+            <ScalarProperty Name="OHDebitAccount" ColumnName="OHDebitAccount" />
+            <ScalarProperty Name="OHCreditPrefix" ColumnName="OHCreditPrefix" />
+            <ScalarProperty Name="OHCreditAccount" ColumnName="OHCreditAccount" />
+            <ScalarProperty Name="OHAccrualJournal" ColumnName="OHAccrualJournal" />
+            <ScalarProperty Name="OHReversalJournal" ColumnName="OHReversalJournal" />
+            <ScalarProperty Name="LastAccrualDate" ColumnName="LastAccrualDate" />
+            <ScalarProperty Name="CloseAccoutingDate" ColumnName="CloseAccoutingDate" />
+            <ScalarProperty Name="Reference1Type" ColumnName="Reference1Type" />
+            <ScalarProperty Name="Reference1" ColumnName="Reference1" />
+            <ScalarProperty Name="Reference2Type" ColumnName="Reference2Type" />
+            <ScalarProperty Name="Reference2" ColumnName="Reference2" />
+            <ScalarProperty Name="AccrualPeriod" ColumnName="AccrualPeriod" />
+            <ScalarProperty Name="CurrentAction" ColumnName="CurrentAction" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblActions"><EntityTypeMapping TypeName="Core.API.Entities.tblAction"><MappingFragment StoreEntitySet="tblActions">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Action1" ColumnName="Action1" />
+            <ScalarProperty Name="Action2" ColumnName="Action2" />
+            <ScalarProperty Name="Action3" ColumnName="Action3" />
+            <ScalarProperty Name="Action4" ColumnName="Action4" />
+            <ScalarProperty Name="Action5" ColumnName="Action5" />
+            <ScalarProperty Name="Action6" ColumnName="Action6" />
+            <ScalarProperty Name="Action7" ColumnName="Action7" />
+            <ScalarProperty Name="Action8" ColumnName="Action8" />
+            <ScalarProperty Name="Action9" ColumnName="Action9" />
+            <ScalarProperty Name="Action10" ColumnName="Action10" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblApprovalGroupItems"><EntityTypeMapping TypeName="Core.API.Entities.tblApprovalGroupItem"><MappingFragment StoreEntitySet="tblApprovalGroupItems">
+            <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="MemberType" ColumnName="MemberType" />
+            <ScalarProperty Name="MemberValue" ColumnName="MemberValue" />
+            <ScalarProperty Name="Selected" ColumnName="Selected" />
+            <ScalarProperty Name="Key1" ColumnName="Key1" />
+            <ScalarProperty Name="Key2" ColumnName="Key2" />
+            <ScalarProperty Name="Key3" ColumnName="Key3" />
+            <ScalarProperty Name="Key4" ColumnName="Key4" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblApprovalGroupMembers"><EntityTypeMapping TypeName="Core.API.Entities.tblApprovalGroupMember"><MappingFragment StoreEntitySet="tblApprovalGroupMembers">
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="MemberType" ColumnName="MemberType" />
+            <ScalarProperty Name="MemberValue" ColumnName="MemberValue" />
+            <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+            <ScalarProperty Name="ProcessingGroupID" ColumnName="ProcessingGroupID" />
+            <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblApprovalGroups"><EntityTypeMapping TypeName="Core.API.Entities.tblApprovalGroup"><MappingFragment StoreEntitySet="tblApprovalGroups">
+            <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+            <ScalarProperty Name="ProcessingGroupID" ColumnName="ProcessingGroupID" />
+            <ScalarProperty Name="RejectProcessingGroupID" ColumnName="RejectProcessingGroupID" />
+            <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+            <ScalarProperty Name="APVendUserID" ColumnName="APVendUserID" />
+            <ScalarProperty Name="Action01" ColumnName="Action01" />
+            <ScalarProperty Name="GroupID01" ColumnName="GroupID01" />
+            <ScalarProperty Name="UserID01" ColumnName="UserID01" />
+            <ScalarProperty Name="Threshold01" ColumnName="Threshold01" />
+            <ScalarProperty Name="Action02" ColumnName="Action02" />
+            <ScalarProperty Name="GroupID02" ColumnName="GroupID02" />
+            <ScalarProperty Name="UserID02" ColumnName="UserID02" />
+            <ScalarProperty Name="Threshold02" ColumnName="Threshold02" />
+            <ScalarProperty Name="Action03" ColumnName="Action03" />
+            <ScalarProperty Name="GroupID03" ColumnName="GroupID03" />
+            <ScalarProperty Name="UserID03" ColumnName="UserID03" />
+            <ScalarProperty Name="Threshold03" ColumnName="Threshold03" />
+            <ScalarProperty Name="Action04" ColumnName="Action04" />
+            <ScalarProperty Name="GroupID04" ColumnName="GroupID04" />
+            <ScalarProperty Name="UserID04" ColumnName="UserID04" />
+            <ScalarProperty Name="Threshold04" ColumnName="Threshold04" />
+            <ScalarProperty Name="Action05" ColumnName="Action05" />
+            <ScalarProperty Name="GroupID05" ColumnName="GroupID05" />
+            <ScalarProperty Name="UserID05" ColumnName="UserID05" />
+            <ScalarProperty Name="Threshold05" ColumnName="Threshold05" />
+            <ScalarProperty Name="Action06" ColumnName="Action06" />
+            <ScalarProperty Name="GroupID06" ColumnName="GroupID06" />
+            <ScalarProperty Name="UserID06" ColumnName="UserID06" />
+            <ScalarProperty Name="Threshold06" ColumnName="Threshold06" />
+            <ScalarProperty Name="Action07" ColumnName="Action07" />
+            <ScalarProperty Name="GroupID07" ColumnName="GroupID07" />
+            <ScalarProperty Name="UserID07" ColumnName="UserID07" />
+            <ScalarProperty Name="Threshold07" ColumnName="Threshold07" />
+            <ScalarProperty Name="Action08" ColumnName="Action08" />
+            <ScalarProperty Name="GroupID08" ColumnName="GroupID08" />
+            <ScalarProperty Name="UserID08" ColumnName="UserID08" />
+            <ScalarProperty Name="Threshold08" ColumnName="Threshold08" />
+            <ScalarProperty Name="Action09" ColumnName="Action09" />
+            <ScalarProperty Name="GroupID09" ColumnName="GroupID09" />
+            <ScalarProperty Name="UserID09" ColumnName="UserID09" />
+            <ScalarProperty Name="Threshold09" ColumnName="Threshold09" />
+            <ScalarProperty Name="Action10" ColumnName="Action10" />
+            <ScalarProperty Name="GroupID10" ColumnName="GroupID10" />
+            <ScalarProperty Name="UserID10" ColumnName="UserID10" />
+            <ScalarProperty Name="Threshold10" ColumnName="Threshold10" />
+            <ScalarProperty Name="InvoiceCompleteLevel" ColumnName="InvoiceCompleteLevel" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblAutoApproveAccounts"><EntityTypeMapping TypeName="Core.API.Entities.tblAutoApproveAccount"><MappingFragment StoreEntitySet="tblAutoApproveAccounts">
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="Base_Account" ColumnName="Base_Account" />
+            <ScalarProperty Name="AutoApproveRecur" ColumnName="AutoApproveRecur" />
+            <ScalarProperty Name="AutoApproveRegular" ColumnName="AutoApproveRegular" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblAutoApproveVendors"><EntityTypeMapping TypeName="Core.API.Entities.tblAutoApproveVendor"><MappingFragment StoreEntitySet="tblAutoApproveVendors">
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+            <ScalarProperty Name="AutoApproveRecur" ColumnName="AutoApproveRecur" />
+            <ScalarProperty Name="AutoApproveRegular" ColumnName="AutoApproveRegular" />
+            <ScalarProperty Name="ApprovalThresholdRecur" ColumnName="ApprovalThresholdRecur" />
+            <ScalarProperty Name="ApprovalThresholdRegular" ColumnName="ApprovalThresholdRegular" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblConfigurations"><EntityTypeMapping TypeName="Core.API.Entities.tblConfiguration"><MappingFragment StoreEntitySet="tblConfiguration">
+            <ScalarProperty Name="ConfigurationID" ColumnName="ConfigurationID" />
+            <ScalarProperty Name="ConfigurationName" ColumnName="ConfigurationName" />
+            <ScalarProperty Name="ConfigurationDescription" ColumnName="ConfigurationDescription" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblConnections"><EntityTypeMapping TypeName="Core.API.Entities.tblConnection"><MappingFragment StoreEntitySet="tblConnections">
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Path" ColumnName="Path" />
+            <ScalarProperty Name="SystemType" ColumnName="SystemType" />
+            <ScalarProperty Name="DefaultConnection" ColumnName="DefaultConnection" />
+            <ScalarProperty Name="PrefixADesc" ColumnName="PrefixADesc" />
+            <ScalarProperty Name="PrefixABDesc" ColumnName="PrefixABDesc" />
+            <ScalarProperty Name="PrefixABCDesc" ColumnName="PrefixABCDesc" />
+            <ScalarProperty Name="JobSec1Size" ColumnName="JobSec1Size" />
+            <ScalarProperty Name="JobPunct1" ColumnName="JobPunct1" />
+            <ScalarProperty Name="JobSec2Size" ColumnName="JobSec2Size" />
+            <ScalarProperty Name="JobPunct2" ColumnName="JobPunct2" />
+            <ScalarProperty Name="JobSec3Size" ColumnName="JobSec3Size" />
+            <ScalarProperty Name="CostCodeSec1Size" ColumnName="CostCodeSec1Size" />
+            <ScalarProperty Name="CostCodePunct1" ColumnName="CostCodePunct1" />
+            <ScalarProperty Name="CostCodeSec2Size" ColumnName="CostCodeSec2Size" />
+            <ScalarProperty Name="CostCodePunct2" ColumnName="CostCodePunct2" />
+            <ScalarProperty Name="CostCodeSec3Size" ColumnName="CostCodeSec3Size" />
+            <ScalarProperty Name="CostCodePunct3" ColumnName="CostCodePunct3" />
+            <ScalarProperty Name="CostCodeSec4Size" ColumnName="CostCodeSec4Size" />
+            <ScalarProperty Name="LastApproveImportedDate" ColumnName="LastApproveImportedDate" />
+            <ScalarProperty Name="LastApproveRMDate" ColumnName="LastApproveRMDate" />
+            <ScalarProperty Name="LastApproveRecurringDate" ColumnName="LastApproveRecurringDate" />
+            <ScalarProperty Name="LastApproveRegularDate" ColumnName="LastApproveRegularDate" />
+            <ScalarProperty Name="Alias" ColumnName="Alias" />
+            <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblExistingInvoices"><EntityTypeMapping TypeName="Core.API.Entities.tblExistingInvoice"><MappingFragment StoreEntitySet="tblExistingInvoices">
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+            <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblGLAccounts"><EntityTypeMapping TypeName="Core.API.Entities.tblGLAccount"><MappingFragment StoreEntitySet="tblGLAccounts">
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="Account" ColumnName="Account" />
+            <ScalarProperty Name="Account_Title" ColumnName="Account_Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceActions"><EntityTypeMapping TypeName="Core.API.Entities.tblInvoiceAction"><MappingFragment StoreEntitySet="tblInvoiceActions">
+            <ScalarProperty Name="ActionSource" ColumnName="ActionSource" />
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+            <ScalarProperty Name="ProcessGroupID" ColumnName="ProcessGroupID" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+            <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+            <ScalarProperty Name="ActionLevel" ColumnName="ActionLevel" />
+            <ScalarProperty Name="Hold" ColumnName="Hold" />
+            <ScalarProperty Name="Rejected" ColumnName="Rejected" />
+            <ScalarProperty Name="Complete" ColumnName="Complete" />
+            <ScalarProperty Name="CompletedBy" ColumnName="CompletedBy" />
+            <ScalarProperty Name="DateAssigned" ColumnName="DateAssigned" />
+            <ScalarProperty Name="AssignedBy" ColumnName="AssignedBy" />
+            <ScalarProperty Name="DateComplete" ColumnName="DateComplete" />
+            <ScalarProperty Name="Comment" ColumnName="Comment" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceCodes"><EntityTypeMapping TypeName="Core.API.Entities.tblInvoiceCode"><MappingFragment StoreEntitySet="tblInvoiceCodes">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="InvoiceCode" ColumnName="InvoiceCode" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceNotes"><EntityTypeMapping TypeName="Core.API.Entities.tblInvoiceNote"><MappingFragment StoreEntitySet="tblInvoiceNotes">
+            <ScalarProperty Name="RwVersion" ColumnName="RwVersion" />
+                <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+            <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+            <ScalarProperty Name="NoteType" ColumnName="NoteType" />
+            <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+            <ScalarProperty Name="ActionLevel" ColumnName="ActionLevel" />
+            <ScalarProperty Name="Priority" ColumnName="Priority" />
+            <ScalarProperty Name="NoteDate" ColumnName="NoteDate" />
+            <ScalarProperty Name="Operator" ColumnName="Operator" />
+            <ScalarProperty Name="NoteText" ColumnName="NoteText" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblInvoices_Custom_Fields"><EntityTypeMapping TypeName="Core.API.Entities.tblInvoices_Custom_Fields"><MappingFragment StoreEntitySet="tblInvoices_Custom_Fields">
+            <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblPrefixVendorJobs"><EntityTypeMapping TypeName="Core.API.Entities.tblPrefixVendorJob"><MappingFragment StoreEntitySet="tblPrefixVendorJob">
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+            <ScalarProperty Name="RecordKey" ColumnName="RecordKey" />
+            <ScalarProperty Name="AssociateWith" ColumnName="AssociateWith" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblUserPermissions"><EntityTypeMapping TypeName="Core.API.Entities.tblUserPermission"><MappingFragment StoreEntitySet="tblUserPermissions">
+            <ScalarProperty Name="RwVersion" ColumnName="RwVersion" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+            <ScalarProperty Name="PrefixOrJob" ColumnName="PrefixOrJob" />
+            <ScalarProperty Name="PrefixOrJobNo" ColumnName="PrefixOrJobNo" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblUsersConfigurations"><EntityTypeMapping TypeName="Core.API.Entities.tblUsersConfiguration"><MappingFragment StoreEntitySet="tblUsersConfiguration">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="ConfigurationID" ColumnName="ConfigurationID" />
+            <ScalarProperty Name="ConfigurationValue" ColumnName="ConfigurationValue" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblVersions"><EntityTypeMapping TypeName="Core.API.Entities.tblVersion"><MappingFragment StoreEntitySet="tblVersion">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Version" ColumnName="Version" />
+            <ScalarProperty Name="DOTNETVersion" ColumnName="DOTNETVersion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TSErrorLogs">
+            <EntityTypeMapping TypeName="Core.API.Entities.TSErrorLog">
+              <MappingFragment StoreEntitySet="TSErrorLog">
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ErrMessage" ColumnName="ErrMessage" />
+                <ScalarProperty Name="InnerException" ColumnName="InnerException" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="FunctionName" ColumnName="FunctionName" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserGroups">
+            <EntityTypeMapping TypeName="Core.API.Entities.tblUserGroup">
+              <MappingFragment StoreEntitySet="tblUserGroups">
+                <ScalarProperty Name="RwVersion" ColumnName="RwVersion" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserGroupMembers">
+            <EntityTypeMapping TypeName="Core.API.Entities.tblUserGroupMember">
+              <MappingFragment StoreEntitySet="tblUserGroupMembers">
+                <ScalarProperty Name="RwVersion" ColumnName="RwVersion" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserGroupsAll" FunctionName="Core.API.Entities.Store.API_GetUserGroups" />
+          <FunctionImportMapping FunctionImportName="GetUserGroupsByRowVersion" FunctionName="Core.API.Entities.Store.API_GetUserGroupsByRowVersion" />
+          <FunctionImportMapping FunctionImportName="GetUserGroupMembers" FunctionName="Core.API.Entities.Store.API_GetUserGroupMembers" />
+          <FunctionImportMapping FunctionImportName="GetUserGroupMembersByGroupId" FunctionName="Core.API.Entities.Store.API_GetUserGroupMembersByGroupId" />
+          <FunctionImportMapping FunctionImportName="GetUsers" FunctionName="Core.API.Entities.Store.API_GetUsers" />
+          <FunctionImportMapping FunctionImportName="GetUsesrByRowVersion" FunctionName="Core.API.Entities.Store.API_GetUsersByRowVersion" />
+          <FunctionImportMapping FunctionImportName="GetUserGroupMembersByRwVersion" FunctionName="Core.API.Entities.Store.API_GetUserGroupMembersByRwVersion" />
+          <FunctionImportMapping FunctionImportName="GetDocumentNotes" FunctionName="Core.API.Entities.Store.API_GetDocumentNotes" />
+          <FunctionImportMapping FunctionImportName="GetDocumentImagePath" FunctionName="Core.API.Entities.Store.API_GetDocumentImagePath" />
+          <FunctionImportMapping FunctionImportName="GetDefaultConnection" FunctionName="Core.API.Entities.Store.API_GetDefaultConnection" />
+          <EntitySetMapping Name="APIMessageLogs">
+            <EntityTypeMapping TypeName="Core.API.Entities.APIMessageLog">
+              <MappingFragment StoreEntitySet="APIMessageLog">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Function" ColumnName="Function" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+                <ScalarProperty Name="MessageLodID" ColumnName="MessageLodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DocumentExists" FunctionName="Core.API.Entities.Store.API_DocumentExists" />
+          <FunctionImportMapping FunctionImportName="DeleteDocument" FunctionName="Core.API.Entities.Store.API_DeleteDocument" />
+          <EntitySetMapping Name="tblSystemSettings">
+            <EntityTypeMapping TypeName="Core.API.Entities.tblSystemSetting">
+              <MappingFragment StoreEntitySet="tblSystemSettings">
+                <ScalarProperty Name="AllowOverrideUnitCost" ColumnName="AllowOverrideUnitCost" />
+                <ScalarProperty Name="AllowMultiLineCommitment" ColumnName="AllowMultiLineCommitment" />
+                <ScalarProperty Name="MSMQServerPort" ColumnName="MSMQServerPort" />
+                <ScalarProperty Name="MSMQServerName" ColumnName="MSMQServerName" />
+                <ScalarProperty Name="OCRDefaultInvoiceDateFormat" ColumnName="OCRDefaultInvoiceDateFormat" />
+                <ScalarProperty Name="OCRRemoveLeadingZerosInvoiceNumber" ColumnName="OCRRemoveLeadingZerosInvoiceNumber" />
+                <ScalarProperty Name="TSLitePath" ColumnName="TSLitePath" />
+                <ScalarProperty Name="POMessageOverTolerance" ColumnName="POMessageOverTolerance" />
+                <ScalarProperty Name="POWarnOverTolerance" ColumnName="POWarnOverTolerance" />
+                <ScalarProperty Name="POInvoiceTypeOverTolerance" ColumnName="POInvoiceTypeOverTolerance" />
+                <ScalarProperty Name="POInvoiceTolerance" ColumnName="POInvoiceTolerance" />
+                <ScalarProperty Name="UsePOInterface" ColumnName="UsePOInterface" />
+                <ScalarProperty Name="FinalResolution" ColumnName="FinalResolution" />
+                <ScalarProperty Name="CaptureResolution" ColumnName="CaptureResolution" />
+                <ScalarProperty Name="OCRDeskewOnLoad" ColumnName="OCRDeskewOnLoad" />
+                <ScalarProperty Name="OCRRecognitionPercent" ColumnName="OCRRecognitionPercent" />
+                <ScalarProperty Name="OCRAccountingDate" ColumnName="OCRAccountingDate" />
+                <ScalarProperty Name="QPDFConvRes" ColumnName="QPDFConvRes" />
+                <ScalarProperty Name="AllowExportBatchNaming" ColumnName="AllowExportBatchNaming" />
+                <ScalarProperty Name="AIMUsers" ColumnName="AIMUsers" />
+                <ScalarProperty Name="AimCheckDocTypeId" ColumnName="AimCheckDocTypeId" />
+                <ScalarProperty Name="AimInvoiceDocTypeId" ColumnName="AimInvoiceDocTypeId" />
+                <ScalarProperty Name="InvoiceExceedsCommitment" ColumnName="InvoiceExceedsCommitment" />
+                <ScalarProperty Name="UseCommitItemDescr" ColumnName="UseCommitItemDescr" />
+                <ScalarProperty Name="DocAssemblyOrder" ColumnName="DocAssemblyOrder" />
+                <ScalarProperty Name="OmitTaxFromCommit" ColumnName="OmitTaxFromCommit" />
+                <ScalarProperty Name="AutoDisplayApprovals" ColumnName="AutoDisplayApprovals" />
+                <ScalarProperty Name="IgnoreThresholdOnReRoute" ColumnName="IgnoreThresholdOnReRoute" />
+                <ScalarProperty Name="AllowNoJobOrGLEntry" ColumnName="AllowNoJobOrGLEntry" />
+                <ScalarProperty Name="UseTimberSync" ColumnName="UseTimberSync" />
+                <ScalarProperty Name="ApproveRegularInvoices" ColumnName="ApproveRegularInvoices" />
+                <ScalarProperty Name="TimberSyncUpdate" ColumnName="TimberSyncUpdate" />
+                <ScalarProperty Name="ApproveRecurringInvoices" ColumnName="ApproveRecurringInvoices" />
+                <ScalarProperty Name="ApproveRMInvoices" ColumnName="ApproveRMInvoices" />
+                <ScalarProperty Name="ApproveImportedInvoices" ColumnName="ApproveImportedInvoices" />
+                <ScalarProperty Name="RestrictGLJobAccess" ColumnName="RestrictGLJobAccess" />
+                <ScalarProperty Name="AllowPOAsAppGrpMember" ColumnName="AllowPOAsAppGrpMember" />
+                <ScalarProperty Name="RegionalDateFormat" ColumnName="RegionalDateFormat" />
+                <ScalarProperty Name="DateEntryFormatMD" ColumnName="DateEntryFormatMD" />
+                <ScalarProperty Name="DateEntryFormatMDY" ColumnName="DateEntryFormatMDY" />
+                <ScalarProperty Name="DateFormat" ColumnName="DateFormat" />
+                <ScalarProperty Name="ExportFormat" ColumnName="ExportFormat" />
+                <ScalarProperty Name="AlwaysExport" ColumnName="AlwaysExport" />
+                <ScalarProperty Name="VendorJobLimit" ColumnName="VendorJobLimit" />
+                <ScalarProperty Name="BudgetVarianceCheck" ColumnName="BudgetVarianceCheck" />
+                <ScalarProperty Name="AllocateTaxes" ColumnName="AllocateTaxes" />
+                <ScalarProperty Name="BlankPageTolerance" ColumnName="BlankPageTolerance" />
+                <ScalarProperty Name="OperatorClearMinutes" ColumnName="OperatorClearMinutes" />
+                <ScalarProperty Name="ReqRouteCommentReview" ColumnName="ReqRouteCommentReview" />
+                <ScalarProperty Name="ReqRouteCommentApprove" ColumnName="ReqRouteCommentApprove" />
+                <ScalarProperty Name="ReqRouteCommentDataEntry" ColumnName="ReqRouteCommentDataEntry" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="API_DeleteTaxAllocation" FunctionName="Core.API.Entities.Store.API_DeleteTaxAllocation" />
+          <FunctionImportMapping FunctionImportName="InsertShadowDistRecord" FunctionName="Core.API.Entities.Store.API_InsertShadowDistRecord" />
+          <FunctionImportMapping FunctionImportName="DeleteDistribution" FunctionName="Core.API.Entities.Store.API_DeleteDistribution" />
+          <FunctionImportMapping FunctionImportName="HoldDocument" FunctionName="Core.API.Entities.Store.API_HoldDocument" />
+          <FunctionImportMapping FunctionImportName="HoldDocumentInAP" FunctionName="Core.API.Entities.Store.API_HoldDocumentInAP" />
+          <FunctionImportMapping FunctionImportName="SaveDocumentNote" FunctionName="Core.API.Entities.Store.API_SaveDocumentNotes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Core.API.Entities.SaveDocumentNote_Result">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ApproveInvoiceAction" FunctionName="Core.API.Entities.Store.TS_ApproveInvoiceAction" />
+          <FunctionImportMapping FunctionImportName="GetInvoice" FunctionName="Core.API.Entities.Store.API_GetInvoice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Core.API.Entities.GetInvoice_Result">
+                <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+                <ScalarProperty Name="MatchType" ColumnName="MatchType" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="OnHold" ColumnName="OnHold" />
+                <ScalarProperty Name="CurrentActionType" ColumnName="CurrentActionType" />
+                <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+                <ScalarProperty Name="CurrentActionLevel" ColumnName="CurrentActionLevel" />
+                <ScalarProperty Name="ConnectionDescription" ColumnName="ConnectionDescription" />
+                <ScalarProperty Name="InvoiceID1" ColumnName="InvoiceID1" />
+                <ScalarProperty Name="ConnectionID1" ColumnName="ConnectionID1" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Discount_Offered" ColumnName="Discount_Offered" />
+                <ScalarProperty Name="Misc_Deduction" ColumnName="Misc_Deduction" />
+                <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+                <ScalarProperty Name="Date_Received" ColumnName="Date_Received" />
+                <ScalarProperty Name="Discount_Date" ColumnName="Discount_Date" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+                <ScalarProperty Name="Accounting_Date" ColumnName="Accounting_Date" />
+                <ScalarProperty Name="Invoice_Code_1" ColumnName="Invoice_Code_1" />
+                <ScalarProperty Name="Invoice_Code_2" ColumnName="Invoice_Code_2" />
+                <ScalarProperty Name="Smry_Payee_Name" ColumnName="Smry_Payee_Name" />
+                <ScalarProperty Name="Smry_Payee_Address_1" ColumnName="Smry_Payee_Address_1" />
+                <ScalarProperty Name="Smry_Payee_Address_2" ColumnName="Smry_Payee_Address_2" />
+                <ScalarProperty Name="Smry_Payee_City" ColumnName="Smry_Payee_City" />
+                <ScalarProperty Name="Smry_Payee_State" ColumnName="Smry_Payee_State" />
+                <ScalarProperty Name="Smry_Payee_ZIP" ColumnName="Smry_Payee_ZIP" />
+                <ScalarProperty Name="Operator_Stamp" ColumnName="Operator_Stamp" />
+                <ScalarProperty Name="Date_Stamp" ColumnName="Date_Stamp" />
+                <ScalarProperty Name="POHeaderID" ColumnName="POHeaderID" />
+                <ScalarProperty Name="RwVersion" ColumnName="RwVersion" />
+                <ScalarProperty Name="imagePath" ColumnName="imagePath" />
+                <ScalarProperty Name="InvoiceCode" ColumnName="InvoiceCode" />
+                <ScalarProperty Name="ScanDate" ColumnName="ScanDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetInvoiceDistributions" FunctionName="Core.API.Entities.Store.API_GetInvoiceDistributions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Core.API.Entities.GetInvoiceDistributions_Result">
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="DistSeq" ColumnName="DistSeq" />
+                <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Tax_Group" ColumnName="Tax_Group" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Tax_Liability" ColumnName="Tax_Liability" />
+                <ScalarProperty Name="Discount_Offered" ColumnName="Discount_Offered" />
+                <ScalarProperty Name="Retainage" ColumnName="Retainage" />
+                <ScalarProperty Name="Misc_Deduction" ColumnName="Misc_Deduction" />
+                <ScalarProperty Name="Misc_Deduction2_Percent" ColumnName="Misc_Deduction2_Percent" />
+                <ScalarProperty Name="Exempt_1099" ColumnName="Exempt_1099" />
+                <ScalarProperty Name="Authorization" ColumnName="Authorization" />
+                <ScalarProperty Name="Joint_Payee" ColumnName="Joint_Payee" />
+                <ScalarProperty Name="dist_code" ColumnName="dist_code" />
+                <ScalarProperty Name="Expense_Account" ColumnName="Expense_Account" />
+                <ScalarProperty Name="Accounts_Payable_Account" ColumnName="Accounts_Payable_Account" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="Cost_Code" ColumnName="Cost_Code" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Commitment" ColumnName="Commitment" />
+                <ScalarProperty Name="Commitment_Line_Item" ColumnName="Commitment_Line_Item" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="Unit_Cost" ColumnName="Unit_Cost" />
+                <ScalarProperty Name="draw" ColumnName="draw" />
+                <ScalarProperty Name="Standard_Item" ColumnName="Standard_Item" />
+                <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+                <ScalarProperty Name="Cost_Code_295" ColumnName="Cost_Code_295" />
+                <ScalarProperty Name="Misc_Entry_1" ColumnName="Misc_Entry_1" />
+                <ScalarProperty Name="Misc_Entry_Units_1" ColumnName="Misc_Entry_Units_1" />
+                <ScalarProperty Name="Misc_Entry_2" ColumnName="Misc_Entry_2" />
+                <ScalarProperty Name="Misc_Entry_Units_2" ColumnName="Misc_Entry_Units_2" />
+                <ScalarProperty Name="MeterOdometer" ColumnName="MeterOdometer" />
+                <ScalarProperty Name="PM_Tenant" ColumnName="PM_Tenant" />
+                <ScalarProperty Name="PM_Lease" ColumnName="PM_Lease" />
+                <ScalarProperty Name="PM_Lease_Revision_Num" ColumnName="PM_Lease_Revision_Num" />
+                <ScalarProperty Name="PM_Property" ColumnName="PM_Property" />
+                <ScalarProperty Name="PM_Unit" ColumnName="PM_Unit" />
+                <ScalarProperty Name="PM_Charge_Type" ColumnName="PM_Charge_Type" />
+                <ScalarProperty Name="PM_Charge_Date" ColumnName="PM_Charge_Date" />
+                <ScalarProperty Name="PM_Item_ID" ColumnName="PM_Item_ID" />
+                <ScalarProperty Name="PM_Chargeback_Description" ColumnName="PM_Chargeback_Description" />
+                <ScalarProperty Name="PM_Markup_Percent" ColumnName="PM_Markup_Percent" />
+                <ScalarProperty Name="PM_Markup_Amount" ColumnName="PM_Markup_Amount" />
+                <ScalarProperty Name="PM_Markup_Charge_Type" ColumnName="PM_Markup_Charge_Type" />
+                <ScalarProperty Name="Operator_Stamp" ColumnName="Operator_Stamp" />
+                <ScalarProperty Name="Date_Stamp" ColumnName="Date_Stamp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRoutingInfo" FunctionName="Core.API.Entities.Store.TS_GetRoutingInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Core.API.Entities.GetRoutingInfo_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+                <ScalarProperty Name="Commitment" ColumnName="Commitment" />
+                <ScalarProperty Name="VendorJob" ColumnName="VendorJob" />
+                <ScalarProperty Name="VendorPrefix" ColumnName="VendorPrefix" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="JobExtra" ColumnName="JobExtra" />
+                <ScalarProperty Name="JobCostCodeCategory" ColumnName="JobCostCodeCategory" />
+                <ScalarProperty Name="JobCategory" ColumnName="JobCategory" />
+                <ScalarProperty Name="JobCostCode" ColumnName="JobCostCode" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+                <ScalarProperty Name="JobAuthorization" ColumnName="JobAuthorization" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="FullGLAccount" ColumnName="FullGLAccount" />
+                <ScalarProperty Name="BaseGLAccount" ColumnName="BaseGLAccount" />
+                <ScalarProperty Name="GLPrefix" ColumnName="GLPrefix" />
+                <ScalarProperty Name="SetApprovalFlagOnExport" ColumnName="SetApprovalFlagOnExport" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RouteInvoice" FunctionName="Core.API.Entities.Store.API_RouteInvoice" />
+          <FunctionImportMapping FunctionImportName="UpdateInvoiceWithActionInfo" FunctionName="Core.API.Entities.Store.TS_UpdateInvoiceWithActionInfo" />
+          <FunctionImportMapping FunctionImportName="GetDocument" FunctionName="Core.API.Entities.Store.API_GetDocument" />
+          <FunctionImportMapping FunctionImportName="GetDocumentListInApproval" FunctionName="Core.API.Entities.Store.API_GetDocumentListInApproval" />
+          <FunctionImportMapping FunctionImportName="GetUsersPermissionsByRowVersion" FunctionName="Core.API.Entities.Store.API_GetUsersPermissionsByRowVersion" />
+          <FunctionImportMapping FunctionImportName="GetUsersPermissions" FunctionName="Core.API.Entities.Store.API_GetUsersPermissions" />
+          <FunctionImportMapping FunctionImportName="GetEquipmentMemoCost" FunctionName="Core.API.Entities.Store.API_GetEquipmentMemoCost" />
+          <FunctionImportMapping FunctionImportName="TestForExistingInvoice" FunctionName="Core.API.Entities.Store.API_TestForExistingInvoice" />
+          <FunctionImportMapping FunctionImportName="GetCommitmentItems" FunctionName="Core.API.Entities.Store.API_GetCommitmentItems">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Core.API.Entities.API_GetCommitmentItems_Result">
+                <ScalarProperty Name="Commitment" ColumnName="Commitment" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RouteDocumentManual" FunctionName="Core.API.Entities.Store.API_RouteDocumentManual" />
+          <FunctionImportMapping FunctionImportName="ValidateDocument" FunctionName="Core.API.Entities.Store.API_ValidateDocument" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="CoreAPI" ZoomLevel="81">
+        <EntityTypeShape EntityType="Core.API.Entities.APM_MASTER__DISTRIBUTION" Width="1.5" PointX="0.75" PointY="3.75" Height="9.1522835286458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.APM_MASTER__INVOICE" Width="1.5" PointX="2.75" PointY="3.75" Height="5.2079475911458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.APM_MASTER__TAX_DISTRIBUTION" Width="1.5" PointX="4.75" PointY="3.75" Height="2.7427376302083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblAccrual" Width="1.5" PointX="6.75" PointY="0.75" Height="4.7149055989583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblAccrualSetting" Width="1.5" PointX="6.75" PointY="6.75" Height="5.2079475911458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblAction" Width="1.5" PointX="8.75" PointY="0.75" Height="2.7427376302083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblApprovalGroupItem" Width="1.5" PointX="8.75" PointY="4.75" Height="2.7427376302083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblApprovalGroupMember" Width="1.5" PointX="8.75" PointY="8.75" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblApprovalGroup" Width="1.5" PointX="2.75" PointY="9.75" Height="8.4948942057291674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblAutoApproveAccount" Width="1.5" PointX="10.75" PointY="0.75" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblAutoApproveVendor" Width="1.5" PointX="10.75" PointY="3.75" Height="1.9210009765625031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblConfiguration" Width="1.5" PointX="0.75" PointY="0.875" Height="1.7566536458333315" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblConnection" Width="1.5" PointX="10.75" PointY="6.75" Height="5.3722949218750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblExistingInvoice" Width="1.5" PointX="12.75" PointY="0.75" Height="1.4279589843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblGLAccount" Width="1.5" PointX="12.75" PointY="3.75" Height="1.4279589843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblInvoiceAction" Width="1.5" PointX="4.75" PointY="12.75" Height="3.5644742838541674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblInvoiceCode" Width="1.5" PointX="12.75" PointY="6.75" Height="1.4279589843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblInvoiceNote" Width="1.5" PointX="6.75" PointY="12.75" Height="2.5783902994791674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblInvoices_Custom_Fields" Width="1.5" PointX="8.75" PointY="13.75" Height="1.0992643229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblPrefixVendorJob" Width="1.5" PointX="14.75" PointY="0.75" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblUserPermission" Width="1.5" PointX="14.75" PointY="3.75" Height="1.7566536458333282" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblUsersConfiguration" Width="1.5" PointX="3" PointY="0.875" Height="1.7566536458333246" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblVersion" Width="1.5" PointX="8.75" PointY="15.75" Height="1.4279589843750102" IsExpanded="true" />
+        <AssociationConnector Association="Core.API.Entities.ConfigurationID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.7533268229166623" />
+          <ConnectorPoint PointX="3" PointY="1.7533268229166623" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Core.API.Entities.TSErrorLog" Width="1.5" PointX="17.375" PointY="0.75" Height="2.2496956380208246" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblUserGroup" Width="1.5" PointX="17.375" PointY="3.75" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblUserGroupMember" Width="1.5" PointX="5.375" PointY="17.75" Height="1.5923063151041674" />
+        <AssociationConnector Association="Core.API.Entities.FK_tblUserGroupMembers_tblUserGroups" >
+          <ConnectorPoint PointX="17.375" PointY="4.6283268229166667" />
+          <ConnectorPoint PointX="16.5" PointY="4.6283268229166667" />
+          <ConnectorPoint PointX="16.5" PointY="5.9210009765625031" />
+          <ConnectorPoint PointX="10.5" PointY="5.9210009765625031" />
+          <ConnectorPoint PointX="10.5" PointY="17.375" />
+          <ConnectorPoint PointX="6.125" PointY="17.375" />
+          <ConnectorPoint PointX="6.125" PointY="17.75" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Core.API.Entities.APIMessageLog" Width="1.5" PointX="17.375" PointY="6.75" Height="2.4140429687500102" />
+        <EntityTypeShape EntityType="Core.API.Entities.tblSystemSetting" Width="1.5" PointX="17.375" PointY="10.75" Height="8.82358886718751" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

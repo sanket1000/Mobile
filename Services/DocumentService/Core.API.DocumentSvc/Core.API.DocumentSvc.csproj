@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{15B3E0D2-6217-493A-A690-158C497F5318}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core.API.DocumentSvc</RootNamespace>
+    <AssemblyName>Core.API.DocumentSvc</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atalasoft.DotAnnotate, Version=10.0.7.58124, Culture=neutral, PublicKeyToken=2b02b46f7326f73b, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Atalasoft\DotImage 10.0\bin\4.0\x86\Atalasoft.DotAnnotate.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage, Version=10.0.7.58124, Culture=neutral, PublicKeyToken=2b02b46f7326f73b, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Atalasoft\DotImage 10.0\bin\4.0\x86\Atalasoft.dotImage.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Pdf, Version=10.0.7.58124, Culture=neutral, PublicKeyToken=2b02b46f7326f73b, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Atalasoft\DotImage 10.0\bin\4.0\x86\Atalasoft.dotImage.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.PdfRasterizer, Version=10.0.7.58124, Culture=neutral, PublicKeyToken=2b02b46f7326f73b, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Atalasoft\DotImage 10.0\bin\4.0\x86\Atalasoft.dotImage.PdfRasterizer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DocumentBO.cs" />
+    <Compile Include="DocumentDA.cs" />
+    <Compile Include="Entity\AnnotationEnt.cs" />
+    <Compile Include="Entity\Annotation\AnnotationDataDto.cs" />
+    <Compile Include="Entity\Annotation\AnnotationDto.cs" />
+    <Compile Include="Entity\Annotation\AnnotationLayerDto.cs" />
+    <Compile Include="Entity\Annotation\AnnotationPageDto.cs" />
+    <Compile Include="Entity\Annotation\BrushDto.cs" />
+    <Compile Include="Entity\Annotation\FontDto.cs" />
+    <Compile Include="Entity\Annotation\PenAnnotationDto.cs" />
+    <Compile Include="Entity\Annotation\PenDto.cs" />
+    <Compile Include="Entity\Annotation\PointBaseAnnotationDto.cs" />
+    <Compile Include="Entity\Annotation\PointDto.cs" />
+    <Compile Include="Entity\Annotation\RectangleAnnotationDto.cs" />
+    <Compile Include="Entity\Annotation\RectangleDto.cs" />
+    <Compile Include="Entity\Annotation\SizeDto.cs" />
+    <Compile Include="Entity\Annotation\TextAnnotationDto.cs" />
+    <Compile Include="Entity\APHoldDoc.cs" />
+    <Compile Include="Entity\Base.cs" />
+    <Compile Include="Entity\Comment.cs" />
+    <Compile Include="Entity\DeleteDoc.cs" />
+    <Compile Include="Entity\DocApproval.cs" />
+    <Compile Include="Entity\DocDistribution.cs" />
+    <Compile Include="Entity\DocFile.cs" />
+    <Compile Include="Entity\DocHeader.cs" />
+    <Compile Include="Entity\Document.cs" />
+    <Compile Include="Entity\DocVendor.cs" />
+    <Compile Include="Entity\HoldDoc.cs" />
+    <Compile Include="Entity\RejectDoc.cs" />
+    <Compile Include="Entity\RetMessage.cs" />
+    <Compile Include="Entity\RouteDoc.cs" />
+    <Compile Include="Entity\SystemSettings.cs" />
+    <Compile Include="Entity\TaxGroup.cs" />
+    <Compile Include="FileSectionFormatter.cs" />
+    <Compile Include="IDocument.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="RetMessageFormatter.cs" />
+    <Compile Include="Utility\ApproveActionHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\coreassociates.tiffeditor\CoreAssociates.TiffEditor\CoreAssociates.TiffEditor.csproj">
+      <Project>{9617000C-44F0-4FF8-8506-904069E4C099}</Project>
+      <Name>CoreAssociates.TiffEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\TimberScanDataAccess\TimberScanDataAccess.csproj">
+      <Project>{15CB020D-1F1F-4221-991C-21CB0B711CB0}</Project>
+      <Name>TimberScanDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\TimberscanGlobal\TimberscanGlobal.csproj">
+      <Project>{2D79CD94-0193-4F73-B0A5-5A7F586A53FD}</Project>
+      <Name>TimberscanGlobal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\TimberScanRouting\TimberscanServices.csproj">
+      <Project>{BF772942-108F-490B-A15D-81A51116B0A4}</Project>
+      <Name>TimberscanServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core.API.DataAccess\Core.API.DataAccess.csproj">
+      <Project>{4BE8EAB6-1AE5-4D19-BB96-448567BAA1BC}</Project>
+      <Name>Core.API.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core.API.EntityModel\Core.API.EntityModel.csproj">
+      <Project>{5F8A3C24-3641-4133-A0F1-99C09D6B8EB8}</Project>
+      <Name>Core.API.EntityModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core.API.TLSettings\Core.API.TLSettings.csproj">
+      <Project>{FFA0063F-1AAE-4384-98ED-368A1FC45333}</Project>
+      <Name>Core.API.TLSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core.API.Utilities\Core.API.Utilities.csproj">
+      <Project>{36620B1E-9BD8-4607-978B-1868C3E164C1}</Project>
+      <Name>Core.API.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>False</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

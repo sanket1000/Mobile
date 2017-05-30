@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Drawing" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Drawing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="StringAlignment">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Near" />
+      <xs:enumeration value="Center" />
+      <xs:enumeration value="Far" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StringAlignment" nillable="true" type="tns:StringAlignment" />
+  <xs:simpleType name="StringTrimming">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Character" />
+      <xs:enumeration value="Word" />
+      <xs:enumeration value="EllipsisCharacter" />
+      <xs:enumeration value="EllipsisWord" />
+      <xs:enumeration value="EllipsisPath" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StringTrimming" nillable="true" type="tns:StringTrimming" />
+</xs:schema>

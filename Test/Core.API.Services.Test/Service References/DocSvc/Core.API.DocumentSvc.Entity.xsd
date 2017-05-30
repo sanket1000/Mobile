@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Core.API.DocumentSvc.Entity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Core.API.DocumentSvc.Entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+  <xs:complexType name="RetMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RetMessage" nillable="true" type="tns:RetMessage" />
+  <xs:complexType name="DocumentEnt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApproveLevel" type="xs:int" />
+      <xs:element minOccurs="0" name="ApproveType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConnectionID" type="xs:int" />
+      <xs:element minOccurs="0" name="Distributions" nillable="true" type="tns:ArrayOfDocDistribution" />
+      <xs:element minOccurs="0" name="DocumentID" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroupID" type="xs:int" />
+      <xs:element minOccurs="0" name="Header" nillable="true" type="tns:DocHeader" />
+      <xs:element minOccurs="0" name="OnAPHold" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OnHold" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentEnt" nillable="true" type="tns:DocumentEnt" />
+  <xs:complexType name="ArrayOfDocDistribution">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocDistribution" nillable="true" type="tns:DocDistribution" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocDistribution" nillable="true" type="tns:ArrayOfDocDistribution" />
+  <xs:complexType name="DocDistribution">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountsPayableAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount" type="xs:float" />
+      <xs:element minOccurs="0" name="Authorization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Commitment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Commitment_Line_Item" type="xs:int" />
+      <xs:element minOccurs="0" name="CostCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cost_Code_295" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date_Stamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DiscountOffered" type="xs:float" />
+      <xs:element minOccurs="0" name="DistCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistSeq" type="xs:int" />
+      <xs:element minOccurs="0" name="DistStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Draw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Equipment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Exempt_1099" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ExpenseAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Extra" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceID" type="xs:int" />
+      <xs:element minOccurs="0" name="Job" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JointPayee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MeterOdometer" type="xs:float" />
+      <xs:element minOccurs="0" name="MiscDeduction" type="xs:float" />
+      <xs:element minOccurs="0" name="MiscDeduction2Percent" type="xs:float" />
+      <xs:element minOccurs="0" name="Misc_Entry_1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Misc_Entry_2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Misc_Entry_Units_1" type="xs:float" />
+      <xs:element minOccurs="0" name="Misc_Entry_Units_2" type="xs:float" />
+      <xs:element minOccurs="0" name="Operator_Stamp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM_Charge_Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PM_Charge_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM_Chargeback_Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM_Item_ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM_Lease" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM_Lease_Revision_Num" type="xs:short" />
+      <xs:element minOccurs="0" name="PM_Markup_Amount" type="xs:float" />
+      <xs:element minOccurs="0" name="PM_Markup_Charge_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM_Markup_Percent" type="xs:float" />
+      <xs:element minOccurs="0" name="PM_Property" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM_Tenant" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PM_Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreTax" type="xs:float" />
+      <xs:element minOccurs="0" name="Retainage" type="xs:float" />
+      <xs:element minOccurs="0" name="Standard_Item" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tax" type="xs:float" />
+      <xs:element minOccurs="0" name="TaxGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxLiability" type="xs:float" />
+      <xs:element minOccurs="0" name="Unit_Cost" type="xs:float" />
+      <xs:element minOccurs="0" name="Units" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocDistribution" nillable="true" type="tns:DocDistribution" />
+  <xs:complexType name="DocHeader">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountingDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Amount" type="xs:float" />
+      <xs:element minOccurs="0" name="CurrentActionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date_Stamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DiscountAmount" type="xs:float" />
+      <xs:element minOccurs="0" name="DiscountDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocumentDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentId" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HeaderStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceCode1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceCode2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InvoiceType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatchType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiscAmount" type="xs:float" />
+      <xs:element minOccurs="0" name="PaymentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PreTaxAmount" type="xs:float" />
+      <xs:element minOccurs="0" name="ReceivedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Smry_Payee_Address_1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Smry_Payee_Address_2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Smry_Payee_City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Smry_Payee_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Smry_Payee_ZIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxAmount" type="xs:float" />
+      <xs:element minOccurs="0" name="Vendor" nillable="true" type="tns:DocVendor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocHeader" nillable="true" type="tns:DocHeader" />
+  <xs:complexType name="DocVendor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocVendor" nillable="true" type="tns:DocVendor" />
+  <xs:complexType name="AnnotationDataDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Pages" nillable="true" type="tns:ArrayOfAnnotationPageDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnnotationDataDto" nillable="true" type="tns:AnnotationDataDto" />
+  <xs:complexType name="ArrayOfAnnotationPageDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnnotationPageDto" nillable="true" type="tns:AnnotationPageDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAnnotationPageDto" nillable="true" type="tns:ArrayOfAnnotationPageDto" />
+  <xs:complexType name="AnnotationPageDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Layers" nillable="true" type="tns:ArrayOfAnnotationLayerDto" />
+      <xs:element minOccurs="0" name="PageIndex" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnnotationPageDto" nillable="true" type="tns:AnnotationPageDto" />
+  <xs:complexType name="ArrayOfAnnotationLayerDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnnotationLayerDto" nillable="true" type="tns:AnnotationLayerDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAnnotationLayerDto" nillable="true" type="tns:ArrayOfAnnotationLayerDto" />
+  <xs:complexType name="AnnotationLayerDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PenAnnotations" nillable="true" type="tns:ArrayOfPenAnnotationDto" />
+      <xs:element minOccurs="0" name="RectanngleAnnotations" nillable="true" type="tns:ArrayOfRectangleAnnotationDto" />
+      <xs:element minOccurs="0" name="TextAnnotations" nillable="true" type="tns:ArrayOfTextAnnotationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnnotationLayerDto" nillable="true" type="tns:AnnotationLayerDto" />
+  <xs:complexType name="ArrayOfPenAnnotationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PenAnnotationDto" nillable="true" type="tns:PenAnnotationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPenAnnotationDto" nillable="true" type="tns:ArrayOfPenAnnotationDto" />
+  <xs:complexType name="PenAnnotationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PointBaseAnnotationDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Pen" nillable="true" type="tns:PenDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PenAnnotationDto" nillable="true" type="tns:PenAnnotationDto" />
+  <xs:complexType name="PointBaseAnnotationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AnnotationDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfPointDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PointBaseAnnotationDto" nillable="true" type="tns:PointBaseAnnotationDto" />
+  <xs:complexType name="AnnotationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanMirror" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanMove" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanResize" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanRotate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanSelect" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CreationTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="tns:PointDto" />
+      <xs:element minOccurs="0" name="ModifiedTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Rotation" type="xs:float" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="tns:SizeDto" />
+      <xs:element minOccurs="0" name="ToolTip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Visible" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnnotationDto" nillable="true" type="tns:AnnotationDto" />
+  <xs:complexType name="PointDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="X" type="xs:float" />
+      <xs:element minOccurs="0" name="Y" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PointDto" nillable="true" type="tns:PointDto" />
+  <xs:complexType name="SizeDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Height" type="xs:float" />
+      <xs:element minOccurs="0" name="Width" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SizeDto" nillable="true" type="tns:SizeDto" />
+  <xs:complexType name="ArrayOfPointDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PointDto" nillable="true" type="tns:PointDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPointDto" nillable="true" type="tns:ArrayOfPointDto" />
+  <xs:complexType name="PenDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Width" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PenDto" nillable="true" type="tns:PenDto" />
+  <xs:complexType name="ArrayOfRectangleAnnotationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RectangleAnnotationDto" nillable="true" type="tns:RectangleAnnotationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRectangleAnnotationDto" nillable="true" type="tns:ArrayOfRectangleAnnotationDto" />
+  <xs:complexType name="RectangleAnnotationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AnnotationDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Fill" nillable="true" type="tns:BrushDto" />
+          <xs:element minOccurs="0" name="Outline" nillable="true" type="tns:PenDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RectangleAnnotationDto" nillable="true" type="tns:RectangleAnnotationDto" />
+  <xs:complexType name="BrushDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BrushDto" nillable="true" type="tns:BrushDto" />
+  <xs:complexType name="ArrayOfTextAnnotationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TextAnnotationDto" nillable="true" type="tns:TextAnnotationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTextAnnotationDto" nillable="true" type="tns:ArrayOfTextAnnotationDto" />
+  <xs:complexType name="TextAnnotationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AnnotationDto">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="Alignment" type="q1:StringAlignment" />
+          <xs:element minOccurs="0" name="AllowEditing" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AutoSize" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Fill" nillable="true" type="tns:BrushDto" />
+          <xs:element minOccurs="0" name="Font" nillable="true" type="tns:FontDto" />
+          <xs:element minOccurs="0" name="FontBrush" nillable="true" type="tns:BrushDto" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="LineAlignment" type="q2:StringAlignment" />
+          <xs:element minOccurs="0" name="Minimized" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Outline" nillable="true" type="tns:PenDto" />
+          <xs:element minOccurs="0" name="Padding" type="xs:float" />
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="Trimming" type="q3:StringTrimming" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TextAnnotationDto" nillable="true" type="tns:TextAnnotationDto" />
+  <xs:complexType name="FontDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bold" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Italic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" type="xs:float" />
+      <xs:element minOccurs="0" name="Strikeout" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Underline" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FontDto" nillable="true" type="tns:FontDto" />
+</xs:schema>

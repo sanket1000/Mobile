@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="TimberScanSettings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ImportedInvoices" type="xs:string" minOccurs="0" />
+        <xs:element name="TLPassword" type="xs:string" minOccurs="0" />
+        <xs:element name="CaptureRejectFolder" type="xs:string" minOccurs="0" />
+        <xs:element name="OSSupport64Bit" type="xs:string" minOccurs="0" />
+        <xs:element name="Password" type="xs:string" minOccurs="0" />
+        <xs:element name="ApprovalStamp" type="xs:string" minOccurs="0" />
+        <xs:element name="ReceivingTicket" type="xs:string" minOccurs="0" />
+        <xs:element name="AutoApproveAllInvoices" type="xs:string" minOccurs="0" />
+        <xs:element name="AttachChecks" type="xs:string" minOccurs="0" />
+        <xs:element name="TScanMobileServer" type="xs:string" minOccurs="0" />
+        <xs:element name="APInvoiceUserID" type="xs:string" minOccurs="0" />
+        <xs:element name="TSyncDriver" type="xs:string" minOccurs="0" />
+        <xs:element name="ServerRequiresAuthentication" type="xs:string" minOccurs="0" />
+        <xs:element name="SystemID" type="xs:string" minOccurs="0" />
+        <xs:element name="RejectMethod" type="xs:string" minOccurs="0" />
+        <xs:element name="MailPort" type="xs:string" minOccurs="0" />
+        <xs:element name="AutoApprovalVendors" type="xs:string" minOccurs="0" />
+        <xs:element name="JCSystem" type="xs:string" minOccurs="0" />
+        <xs:element name="CaptureHotFolder" type="xs:string" minOccurs="0" />
+        <xs:element name="ReviewMandatory" type="xs:string" minOccurs="0" />
+        <xs:element name="TLUserID" type="xs:string" minOccurs="0" />
+        <xs:element name="AutoStampApproval" type="xs:string" minOccurs="0" />
+        <xs:element name="LastOtherInvoiceProcessDate" type="xs:string" minOccurs="0" />
+        <xs:element name="SubFolderType2Desc" type="xs:string" minOccurs="0" />
+        <xs:element name="NotifyUserOfBcc" type="xs:string" minOccurs="0" />
+        <xs:element name="UserMessage" type="xs:string" minOccurs="0" />
+        <xs:element name="TScanMobilePassword" type="xs:string" minOccurs="0" />
+        <xs:element name="OmitAcctName" type="xs:string" minOccurs="0" />
+        <xs:element name="SQLConnectMethod" type="xs:string" minOccurs="0" />
+        <xs:element name="RecurringInvoiceAttachments" type="xs:string" minOccurs="0" />
+        <xs:element name="APDatabase" type="xs:string" minOccurs="0" />
+        <xs:element name="TScanServer64" type="xs:string" minOccurs="0" />
+        <xs:element name="AutoApprovalAccounts" type="xs:string" minOccurs="0" />
+        <xs:element name="MasterEMailAddress" type="xs:string" minOccurs="0" />
+        <xs:element name="CheckImageFolder" type="xs:string" minOccurs="0" />
+        <xs:element name="InvoicesWithData" type="xs:string" minOccurs="0" />
+        <xs:element name="InvoiceCode1Select" type="xs:string" minOccurs="0" />
+        <xs:element name="MasterEMailFrom" type="xs:string" minOccurs="0" />
+        <xs:element name="ReviewEntryMandatory" type="xs:string" minOccurs="0" />
+        <xs:element name="BlankPageTolerance" type="xs:string" minOccurs="0" />
+        <xs:element name="CaptureImportFolder" type="xs:string" minOccurs="0" />
+        <xs:element name="CheckSubFolderType1" type="xs:string" minOccurs="0" />
+        <xs:element name="APInvoicesServer" type="xs:string" minOccurs="0" />
+        <xs:element name="RecurringInvoices" type="xs:string" minOccurs="0" />
+        <xs:element name="AttachPaidChecks" type="xs:string" minOccurs="0" />
+        <xs:element name="MDBVersion" type="xs:string" minOccurs="0" />
+        <xs:element name="UpdateTimberline" type="xs:string" minOccurs="0" />
+        <xs:element name="GroupPrefix" type="xs:string" minOccurs="0" />
+        <xs:element name="DateReceivedUsage" type="xs:string" minOccurs="0" />
+        <xs:element name="SubFolderType1" type="xs:string" minOccurs="0" />
+        <xs:element name="SubFolderType2" type="xs:string" minOccurs="0" />
+        <xs:element name="ApprovalDate" type="xs:string" minOccurs="0" />
+        <xs:element name="TScanMobileDriver" type="xs:string" minOccurs="0" />
+        <xs:element name="ESMTPAuthMode" type="xs:string" minOccurs="0" />
+        <xs:element name="TScanMobileUserID" type="xs:string" minOccurs="0" />
+        <xs:element name="TSyncServer64" type="xs:string" minOccurs="0" />
+        <xs:element name="APInvoicePassword" type="xs:string" minOccurs="0" />
+        <xs:element name="UseCommitmentItemDesc" type="xs:string" minOccurs="0" />
+        <xs:element name="SourceDirectory" type="xs:string" minOccurs="0" />
+        <xs:element name="TSyncUserID" type="xs:string" minOccurs="0" />
+        <xs:element name="RecurringAutoApprovalVendors" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalActions" type="xs:string" minOccurs="0" />
+        <xs:element name="CaptureProcessedFolder" type="xs:string" minOccurs="0" />
+        <xs:element name="AlwaysBatchExport" type="xs:string" minOccurs="0" />
+        <xs:element name="MultiDataFolderEntry" type="xs:string" minOccurs="0" />
+        <xs:element name="SQLAuthentication" type="xs:string" minOccurs="0" />
+        <xs:element name="PMSystem" type="xs:string" minOccurs="0" />
+        <xs:element name="TSyncServer" type="xs:string" minOccurs="0" />
+        <xs:element name="ImageQuality" type="xs:string" minOccurs="0" />
+        <xs:element name="RecurringAutoApprovalAccounts" type="xs:string" minOccurs="0" />
+        <xs:element name="SMTPServer" type="xs:string" minOccurs="0" />
+        <xs:element name="InvoiceRouting" type="xs:string" minOccurs="0" />
+        <xs:element name="InvoiceFolder" type="xs:string" minOccurs="0" />
+        <xs:element name="AutoStampLocation" type="xs:string" minOccurs="0" />
+        <xs:element name="TScanMobileServer64" type="xs:string" minOccurs="0" />
+        <xs:element name="StoreCheckImages" type="xs:string" minOccurs="0" />
+        <xs:element name="AdminPassword" type="xs:string" minOccurs="0" />
+        <xs:element name="SignatureType" type="xs:string" minOccurs="0" />
+        <xs:element name="TSyncPassword" type="xs:string" minOccurs="0" />
+        <xs:element name="BudgetVarianceCheck" type="xs:string" minOccurs="0" />
+        <xs:element name="SubFolderType1Desc" type="xs:string" minOccurs="0" />
+        <xs:element name="BccEMailAddress1" type="xs:string" minOccurs="0" />
+        <xs:element name="TScanMobileDatabase" type="xs:string" minOccurs="0" />
+        <xs:element name="BccEMailAddress2" type="xs:string" minOccurs="0" />
+        <xs:element name="UploadDirectory" type="xs:string" minOccurs="0" />
+        <xs:element name="Login" type="xs:string" minOccurs="0" />
+        <xs:element name="CheckSubFolderType2" type="xs:string" minOccurs="0" />
+        <xs:element name="TSyncDatabase" type="xs:string" minOccurs="0" />
+        <xs:element name="SetupComplete" type="xs:string" minOccurs="0" />
+        <xs:element name="ApprovalSignature" type="xs:string" minOccurs="0" />
+        <xs:element name="InterfaceTransInvoices" type="xs:string" minOccurs="0" />
+        <xs:element name="TScanSyncDriver64" type="xs:string" minOccurs="0" />
+        <xs:element name="APInvoicesDriver" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="TimberScanSettings" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

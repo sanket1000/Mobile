@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36620B1E-9BD8-4607-978B-1868C3E164C1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core.API.Utilities</RootNamespace>
+    <AssemblyName>Core.API.Utilities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessObject\SystemSettingsBO.cs" />
+    <Compile Include="BusinessObject\TSTimberlineSettingsBO.cs" />
+    <Compile Include="Data\TLSettingsDA.cs" />
+    <Compile Include="Helpers\APIMessageLogger.cs" />
+    <Compile Include="Helpers\APIUtilityHelper.cs" />
+    <Compile Include="Helpers\CommonFunctions.cs" />
+    <Compile Include="Helpers\Connection.cs" />
+    <Compile Include="Helpers\ConnectionCollection.cs" />
+    <Compile Include="Helpers\APIUtilDataAccessHelper.cs" />
+    <Compile Include="Helpers\Encryption.cs" />
+    <Compile Include="Helpers\SystemProcedures.cs" />
+    <Compile Include="Helpers\TSErrorLogger.cs" />
+    <Compile Include="Helpers\xfs.cs">
+      <DependentUpon>xfs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\xfs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>xfs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SystemSettings.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Helpers\xfs.xsc">
+      <DependentUpon>xfs.xsd</DependentUpon>
+    </None>
+    <None Include="Helpers\xfs.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>xfs.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Helpers\xfs.xss">
+      <DependentUpon>xfs.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.API.DataAccess\Core.API.DataAccess.csproj">
+      <Project>{4BE8EAB6-1AE5-4D19-BB96-448567BAA1BC}</Project>
+      <Name>Core.API.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.API.EntityModel\Core.API.EntityModel.csproj">
+      <Project>{5F8A3C24-3641-4133-A0F1-99C09D6B8EB8}</Project>
+      <Name>Core.API.EntityModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
